@@ -1,0 +1,118 @@
+\documentclass{article}
+\usepackage[margin=1.3in]{geometry}
+\usepackage{amsmath}
+
+\title{Derivation of Maxwell's Equations}
+
+\begin{document}
+\maketitle
+\abstract{It is shown that Maxwell's equations follow directly from the ansatz ``an electric current density is a conserved, integrable, and bounded vector field in spacetime.''}
+
+\section{Derivatives and Antiderivatives of Multivector Fields}
+
+The vector derivative of a multivector field $M$ is given by
+
+\begin{equation}
+  \nabla M = \nabla \cdot M + \nabla \wedge M.
+\end{equation}
+
+Hence, denoting $M_n \equiv \langle M \rangle_n$,
+
+\begin{equation}
+  \langle \nabla M \rangle_n = \nabla \cdot M_{n+1} + \nabla \wedge M_{n-1}.\label{eq:top-bottom-potentials}
+\end{equation}
+
+\cite{cagc} shows that any integrable multivector function is the derivative of some other multivector function. The antiderivative of a multivector function is given explicitly as an integral in \cite{cagc} on page 261. Here we do not need the explicit form, as we are only concerned with determining the graded properties of antiderivatives.
+
+An antiderivative $G$ of some multivector field $J$ satisfies
+
+\begin{equation}
+  \nabla G = J.
+\end{equation}
+
+Constraints on $G$ can be determined using Equation \ref{eq:top-bottom-potentials}. $J_n$ is given by
+
+\begin{equation}
+  J_n = \nabla \cdot G_{n+1} + \nabla \wedge G_{n-1}.\label{eq:potential-grade}
+\end{equation}
+
+Hence, if $J_k = 0$, then
+
+\begin{equation}
+  \nabla \cdot G_{k+1} = 0 \text{ and } \nabla \wedge G_{k-1} = 0\label{eq:constraints}
+\end{equation}
+
+are constraints on $G$.
+
+\section{Antiderivative of a Conserved and Bounded Current}
+
+Suppose $J_1$ is an conserved (i.e. divergenceless), integrable, and bounded vector field. Examples of such a vector field include the electrical current density of electromagnetism and the probability current density of Dirac theory.
+
+That $J_1$ is integrable implies that it possesses an antiderivative $G$ satisfying
+
+  \begin{equation}
+    \nabla G = J_1.
+  \end{equation}
+
+  Using Equation \ref{eq:constraints}, the potential can be placed in the form
+
+  \begin{equation}
+    G = G_0 + G_2 + C,
+  \end{equation}
+
+  with the constraint
+
+  \begin{equation}
+    \nabla \wedge G_2 = 0\label{eq:curl-free}
+  \end{equation}
+
+  and where $C$ is monogenic, i.e.
+
+  \begin{equation}
+    \nabla C = 0.\label{eq:monogenic}
+  \end{equation}
+
+  This means that
+
+  \begin{equation}
+    J_1 = \nabla G = \nabla G_0 + \nabla \cdot G_2.\label{eq:current-conclusion-1}
+  \end{equation}
+
+  Thus, since $J_1$ is divergenceless, i.e.
+
+  \begin{equation}
+    \nabla \cdot J_1 = \nabla^2 G_0 + \nabla \cdot (\nabla \cdot G_2) = \nabla^2 G_0 = 0,
+  \end{equation} 
+
+  the only constraint on $G$ is
+
+  \begin{equation}
+    \nabla^2 G_0 = 0.\label{eq:harmonic}
+  \end{equation}
+
+  Generally, $J_1$ is of the form
+
+  \begin{equation}
+    J_1 = \nabla \cdot G_2 + B,
+  \end{equation}
+
+  where $B$ is a monogenic vector field. 
+
+  The fundamental property of a monogenic field is that, in any region, it is uniquely determined by its values on the boundary of the region. Because of this, it shares many similar properties to complex analytic functions. In particular, if $B$ is bounded at infinity, then it must be constant, so if $J_1$ is bounded at infinity, $B$ must be a constant.
+
+  Remarkably, this means that the antiderivative of any conserved, integrable, and bounded spacetime vector field $J \in G_{1,3}$ is a bivector field $F$ satisfying Maxwell's equations
+
+  \begin{equation}
+    \nabla F = J.\label{eq:maxwell}
+  \end{equation}
+
+  \begin{thebibliography}{9} 
+
+    \bibitem{cagc}
+      D. Hestenes.
+      \emph{Clifford algebra to geometric calculus}.
+      D. Reidel Publishing Company (1984).
+
+  \end{thebibliography}
+
+\end{document}
