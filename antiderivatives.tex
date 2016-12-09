@@ -1,14 +1,15 @@
 \documentclass{article}
-\usepackage[margin=1.3in]{geometry}
+\usepackage[margin=1.2in]{geometry}
 \usepackage{amsmath}
-\usepackage{hyperref}
-\hypersetup{colorlinks=true}
+% \usepackage{hyperref}
+% \hypersetup{colorlinks=true}
 
 \title{Derivation of Maxwell's Equations}
+\author{Luke Burns}
 
 \begin{document}
 \maketitle
-\abstract{It is shown that Maxwell's equations follow directly from the ansatz ``an electric current density is a conserved, integrable, and bounded vector field in spacetime.''}
+\abstract{It is shown that Maxwell's equations follow directly from the ansatz ``an electric current density is a conserved, integrable, and bounded timelike vector field in spacetime.''}
 
 \section{Derivatives and Antiderivatives of Multivector Fields}
 
@@ -46,11 +47,9 @@ Hence, if $J_k = 0$, then
 
 are constraints on $G$.
 
-\section{Antiderivative of a Conserved and Bounded Current}
+\section{Maxwell's Equations}
 
-Suppose $J_1$ is an conserved (i.e. divergenceless), integrable, and bounded vector field. Examples of such a vector field include the electrical current density of electromagnetism and the probability current density of Dirac theory.
-
-That $J_1$ is integrable implies that it possesses an antiderivative $G$ satisfying
+Suppose $J_1$ is an conserved (i.e. divergenceless), integrable vector field. That $J_1$ is integrable implies that it possesses an antiderivative $G$ satisfying
 
   \begin{equation}
     \nabla G = J_1.
@@ -92,7 +91,7 @@ That $J_1$ is integrable implies that it possesses an antiderivative $G$ satisfy
     \nabla^2 G_0 = 0.\label{eq:harmonic}
   \end{equation}
 
-  Generally, $J_1$ is of the form
+  More generally, $J_1$ is of the form
 
   \begin{equation}
     J_1 = \nabla \cdot G_2 + B,
@@ -100,9 +99,9 @@ That $J_1$ is integrable implies that it possesses an antiderivative $G$ satisfy
 
   where $B$ is a monogenic vector field. 
 
-  The fundamental property of a monogenic field is that, in any region, it is uniquely determined by its values on the boundary of the region. Because of this, it shares many similar properties to complex analytic functions. In particular, if $B$ is bounded at infinity, then it must be constant, so if $J_1$ is bounded at infinity, $B$ must be a constant. This argument is failing. See \href{https://github.com/lukeburns/antiderivatives/issues/1}{Issue 1}.
+  The fundamental property of a monogenic field is that, in any region it is uniquely determined by its values on the boundary of that region. Because of this, it shares many similar properties to complex analytic functions. In particular, if $B$ is timelike (i.e. positive-definite $B^2 > 0$) and $B^2$ is bounded over all space, then it must be constant.\cite{gap} This is a generalization of Liouville's theorem. Hence, if $J_1$ is timelike and bounded over all space, then $B$ must be a constant.
 
-  Remarkably, this means that the antiderivative of any conserved, integrable, and bounded spacetime vector field $J \in G_{1,3}$ is a bivector field $F$ satisfying Maxwell's equations
+  Remarkably, this means that the antiderivative of any conserved, integrable, and bounded timelike vector field $J \in G_{1,3}$ in spacetime is a bivector field $F$ satisfying Maxwell's equations
 
   \begin{equation}
     \nabla F = J.\label{eq:maxwell}
@@ -114,6 +113,10 @@ That $J_1$ is integrable implies that it possesses an antiderivative $G$ satisfy
       D. Hestenes.
       \emph{Clifford algebra to geometric calculus}.
       D. Reidel Publishing Company (1984).
+
+    \bibitem{gap} 
+      C. Doran and A. Lasenby.
+      \emph{Geometric Algebra for Physicists}. Cambridge University Press (2003).
 
   \end{thebibliography}
 
