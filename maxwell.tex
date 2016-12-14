@@ -1,111 +1,322 @@
 \documentclass{article}
-\usepackage[margin=1.2in]{geometry}
+\usepackage[margin=1in]{geometry}
 \usepackage{amsmath}
 % \usepackage{hyperref}
 % \hypersetup{colorlinks=true}
 
-\title{Maxwell's Equations from a Bounded Current}
+\title{The Continuity Equation Implies Maxwell's Equations}
 \author{Luke Burns}
 
 \begin{document}
 \maketitle
-\abstract{It is shown that Maxwell's equations follow directly from the ansatz ``an electric current density is a conserved, integrable, and bounded timelike vector field in spacetime.''}
+\abstract{It is shown that the antiderivative of a coclosed (closed) multivector field fails to be closed (coclosed) by at most a harmonic term, from which it follows that \emph{any} vector valued current density $J$ in four dimensions that is conserved (i.e. is coclosed) possesses a bivector valued antiderivative $F$ that satisfies Maxwell's equations $\partial F = J$ under physically reasonable boundary conditions.}
 
-\section{Derivatives and Antiderivatives}
+\section{Introduction}
 
-The vector derivative of a multivector field $M$ is given by
+After establishing a mapping between $n$-vector fields and differential forms of degree $n$, I present two key results of geometric calculus: a generalized Integral Formula and Helmholtz decomposition for fields. 
 
-\begin{equation}
-  \nabla M = \nabla \cdot M + \nabla \wedge M.
-\end{equation}
+Using these results, I show that all closed fields are inexact by at most a monogenic term. Monogenic fields are characterized by the property that they are fully determined by boundary conditions, analogous to complex analytic functions. I present some conditions under which these fields are exact. A field whose antiderivative is closed is dubbed \emph{faithful}, by which it follows that \emph{``the derivative of a closed field is faithful, and the antiderivative of a faithful field is closed.''}
 
-Hence, denoting $M_n \equiv \langle M \rangle_n$,
+This establishes an equivalence between the statements \emph{``an electromagnetic field $F$ is a closed bivector''} and \emph{``an electromagnetic current $J$ is a faithful vector,''} both of which fully determine the structure of Maxwell's equations. I then show that any conserved vector valued field $J$ is faithful under physically reasonable boundary conditions.
 
-\begin{equation}
-  \langle \nabla M \rangle_n = \nabla \cdot M_{n+1} + \nabla \wedge M_{n-1}.\label{eq:top-bottom-potentials}
-\end{equation}
-
-\cite{cagc} shows that any integrable multivector function is the derivative of some other multivector function. This is a generalization of the Helmholtz theorem. The antiderivative of a multivector function is given explicitly as an integral in \cite{cagc} on page 261, although it is not needed for this result.
-
-An antiderivative $G$ of some multivector field $J$ satisfies
+\section{Fields and forms} If $F_n \equiv \langle F \rangle_n$ is the grade $n$ part of the multivector field (hereafter, just field) $F$, then its corresponding \emph{differential form $f_n$ of degree $n$} is a scalar field given by \cite{cagc}
 
 \begin{equation}
-  \nabla G = J.
+  f_n \equiv d^nx^\dagger \cdot F_n,\label{eq:form}
 \end{equation}
 
-Constraints on $G$ can be determined using Equation \ref{eq:top-bottom-potentials}. $J_n$ is given by
+which is the projection of the $n$-vector field $F_n$ onto the directed measure $d^nx^\dagger = dx_n \wedge \dots \wedge dx_1$, where $dx_i$ are vector valued differentials. 
+
+The hodge star operation $*$ acts on fields as
 
 \begin{equation}
-  J_n = \nabla \cdot G_{n+1} + \nabla \wedge G_{n-1}.\label{eq:potential-grade}
+  *F \equiv F^\dagger I,\label{eq:hodge}
 \end{equation}
 
-Hence, if $J_k = 0$, then
+where $I$ is the pseudoscalar of some oriented vector manifold.
+
+The exterior derivative $d$ behaves identically to the curl
 
 \begin{equation}
-  \nabla \cdot G_{k+1} = 0 \text{ and } \nabla \wedge G_{k-1} = 0\label{eq:constraints}
+  d f_n \equiv d^{n+1}x^\dagger \cdot (\partial \wedge F_n),\label{eq:curl}
 \end{equation}
 
-are constraints on $G$.
+and the ``adjoint operator'' $\delta$ behaves identically to (minus) the divergence
 
-\section{Maxwell's Equations}
+\begin{equation}
+  \delta f_n \equiv d^{n-1}x^\dagger \cdot (-\partial \cdot F_n).\label{eq:divergence}
+\end{equation} 
 
-Suppose $J_1$ is an conserved (i.e. divergenceless), integrable vector field. That $J_1$ is integrable implies that it possesses an antiderivative $G$ satisfying
+The word \emph{form} will be reserved for scalar fields corresponding to some $n$-vector field via Equation \ref{eq:form}. Lowercase letters will be used for forms and uppercase letters for fields. Subscripts denote grade (degree).
 
-  \begin{equation}
-    \nabla G = J_1.
-  \end{equation}
+\section{Derivatives}
 
-  Using Equation \ref{eq:constraints}, the potential can be placed in the form
+A field $F$ is called \emph{closed or curl free} when 
 
-  \begin{equation}
-    G = G_0 + G_2 + C,
-  \end{equation}
+\begin{equation}
+  \partial \wedge F = 0
+\end{equation}
 
-  with the constraint
+and \emph{coclosed or divergence free} when 
 
-  \begin{equation}
-    \nabla \wedge G_2 = 0\label{eq:curl-free}
-  \end{equation}
+\begin{equation}
+  \partial \cdot F = 0.
+\end{equation}
 
-  and where $C$ is monogenic, i.e.
+A field with no divergence or curl (closed and coclosed)
 
-  \begin{equation}
-    \nabla C = 0.\label{eq:monogenic}
-  \end{equation}
+\begin{equation}
+  \partial F = \partial \cdot F + \partial \wedge F = 0
+\end{equation}
 
-  This means that
+is called \emph{monogenic}. It possesses the property of complex analytic functions that, in any region, it is fully determined by its values on the boundary of that region. Hence, the form $\omega$ is closed if $d \omega = 0$, coclosed if $\delta \omega = 0$, and monogenic if $d \omega = \delta \omega = 0$.
 
-  \begin{equation}
-    J_1 = \nabla G = \nabla G_0 + \nabla \cdot G_2.\label{eq:current-conclusion-1}
-  \end{equation}
+A field $H$ that satisfies
 
-  Thus, since $J_1$ is divergenceless, i.e.
+\begin{equation}
+  \partial^2 H = 0
+\end{equation}
 
-  \begin{equation}
-    \nabla \cdot J_1 = \nabla^2 G_0 + \nabla \cdot (\nabla \cdot G_2) = \nabla^2 G_0 = 0,
-  \end{equation} 
+might be called \emph{harmonic}, although the term is inappropriate in mixed signature spaces. For instance, in Minkowski space, $\partial^2 H = (\partial_t^2 - \vec \nabla^2) H = 0$ is the wave equation and its properties are differ dramatically from the usual harmonic functions in Euclidean spaces. Nonetheless, we will abuse the term here for lack of a better one. A form $\gamma$ is then harmonic if $d \delta \gamma + \delta d \gamma = 0$.
 
-  the only constraint on $G$ is
+\section{Potentials}
 
-  \begin{equation}
-    \nabla^2 G_0 = 0.\label{eq:harmonic}
-  \end{equation}
+If a field $J$ is written as
 
-  More generally, $J_1$ is of the form
+\begin{equation}
+  J = \partial \cdot G + \partial \wedge H,
+\end{equation}
 
-  \begin{equation}
-    J_1 = \nabla \cdot G_2 + B,
-  \end{equation}
+then $G$ and $H$ are called \emph{potentials} for $J$. By extension, if a form $\omega$ is given by
 
-  where $B$ is a monogenic vector field. 
+\begin{equation}
+  \omega = d \alpha + \delta \beta
+\end{equation}
 
-  The fundamental property of a monogenic field is that, in any region it is uniquely determined by its values on the boundary of that region. Because of this, it shares many similar properties to complex analytic functions. In particular, if $B$ is timelike (i.e. positive-definite $B^2 > 0$) and $B^2$ is bounded over all space, then it must be constant.\cite{gap} This is a generalization of Liouville's theorem. Hence, if $J_1$ is timelike and bounded over all space, then $B$ must be a constant.
+then $\alpha$ and $\beta$ will be called potentials for $\omega$.
 
-  Remarkably, this means that the antiderivative of any conserved, integrable, and bounded timelike vector field $J \in G_{1,3}$ in spacetime is a bivector field $F$ satisfying Maxwell's equations
+A field $J$ is called \emph{exact} when
 
-  \begin{equation}
-    \nabla F = J.\label{eq:maxwell}
-  \end{equation}
+\begin{equation}
+  J = \partial \wedge F
+\end{equation}
+
+and \emph{coexact} when
+
+\begin{equation}
+  J = \partial \cdot F,
+\end{equation}
+
+whereby a form $\omega$ is exact if $\omega = d \alpha$ and coexact if $\omega = \delta \beta$.
+
+\section{Antiderivatives}
+
+A field $F$ is called an \emph{antiderivative} of $J$ if
+
+\begin{equation}
+  J = \partial F = \partial \cdot F + \partial \wedge F,\label{eq:antiderivative}
+\end{equation}
+
+which is unique up to a monogenic term. That is, $F + C$ such that $\partial C = 0$ is also an antiderivative. Furthermore, given an antiderivative, one has possession of constraints on $F$. For every $J_k = 0$,
+
+\begin{equation}
+  J_k = \partial \cdot F_{k+1} + \partial \wedge F_{k-1} = 0.\label{eq:constraints}
+\end{equation}
+
+As an example, if $J = J_n$ is an $n$-vector field, then 
+
+\begin{equation}
+  J_n = \partial F = \partial \cdot F_{n+1} + \partial \wedge F_{n-1},\label{ex:antiderivative}
+\end{equation}
+
+and the constraints due to $J_{n-1} = J_{n+1} = 0$ are
+
+\begin{equation}
+  \partial \cdot F_{n-1} = \partial \wedge F_{n+1} = 0.\label{ex:constraints}
+\end{equation}
+
+Of course, $F$ \emph{could} contain terms of higher and lower grades, but they make no contribution to $J_n$. In this case, it will generally be of the form $F = F_{n-1} + F_{n+1} + C$.
+
+If $j_n$ and $f_n$ are the forms given by $J_n$ and $F_n$, then Equation \ref{ex:antiderivative} is equivalent to
+
+\begin{equation}
+  j_n = \delta f_{n+1} + d f_{n-1},
+\end{equation}
+
+and Equation \ref{ex:constraints} is equivalent to
+
+\begin{equation}
+  \delta f_{n-1} = d f_{n+1} = 0.
+\end{equation}
+
+Given potentials $f_{n-1}$ and $f_{n+1}$ under these constraints, one is in possession of an antiderivative of $j_n$.
+
+\section{The Fundamental Theorem}
+
+Let $\mathcal{M}$ be an m-dimensional smooth oriented vector manifold with a piecewise smooth boundary $\partial \mathcal{M}$ and $L$ be a linear function, differentiable on $\mathcal{M}$ and $\partial \mathcal{M}$. Then, \cite{cagc}
+
+\begin{equation}
+  \int L(\dot x, d^mx \cdot \dot \partial) = \oint L(x, d^{m-1}x),\label{eq:fundamental-theorem}
+\end{equation}
+
+where $L(\dot x, d^mx \cdot \dot \partial)$ denotes right and left differentiation all $x$ dependent terms by $\partial$.
+
+Stokes' theorem of differential forms is
+
+\begin{equation}
+  \int \langle L(\dot x, d^mx \cdot \dot \partial)\rangle = \oint \langle L(x, d^{m-1}x)\rangle,
+\end{equation}
+
+for scalar valued integrands.
+
+\section{Integral Formula}
+
+Let $J$ be a field on a simple (not self-intersecting) manifold $\mathcal{M}$ subject to the same criteria in the fundamental theorem. Suppose $J$ satisfies the equation
+
+\begin{equation}
+  \partial F = J.
+\end{equation}
+
+Then $F$ is given by \cite{cagc}
+
+\begin{equation}
+  F(x) = (-1)^m I^{-1}(x) \left(\int g(x, x') d^{m}x' J(x') - \oint g(x, x') d^{m-1}x' F(x')\right),\label{eq:integral-formula}
+\end{equation}
+
+where $g$ is a Green's function of $\partial$ satisfying $\partial g(x,x') = - g(x, x') \partial' = \delta(x - x').$ This result says that \emph{any integrable field has an antiderivative, and it's given by Equation \ref{eq:integral-formula}}.
+
+\section{Helmholtz decomposition}
+
+The integral forumla tells us that $J$ has an antiderivative $F$ such that
+
+\begin{align}
+  J = \partial F = \partial \cdot F + \partial \wedge F &= (-1)^m I^{-1} \left(\int g d^{m}x \cdot \partial^2 F - \oint g d^{m-1}x \partial F\right).\label{eq:helmholtz}
+\end{align}
+
+In addition, we can say
+
+\begin{equation}
+  \partial \cdot F = (-1)^m I^{-1} \left(\int g d^{m}x \cdot \partial (\partial \cdot F) - \oint g d^{m-1}x \partial \cdot F\right)
+\end{equation}
+
+and
+
+\begin{equation}
+  \partial \wedge F = (-1)^m I^{-1} \left(\int g d^{m}x \cdot \partial (\partial \wedge F) - \oint g d^{m-1}x \partial \wedge F\right),
+\end{equation}
+
+which gives a generalized Helmholtz decomposition into divergence free (or coclosed) and curl free (or closed) fields, $\partial \cdot F$ and $\partial \wedge F$ respectively. This is because $\partial \wedge (\partial \wedge M) = \partial \cdot (\partial \cdot M) = 0$ for any field $M$. 
+
+Additionally, this decomposition comes with constraints given by Equation \ref{eq:constraints}.
+
+\section{Antiderivatives of divergence free (or coclosed) fields} The above result implies that antiderivatives of divergence free fields fail to be curl free, and antiderivatives of curl free fields fail to be divergence free, by at most a harmonic term $H$ satisfying $\partial^2 H = 0$.
+
+Suppose $J = \partial F$ is divergence free (the dual result for curl free fields follows identically). Then, 
+
+\begin{equation}
+  \partial \cdot J = \partial \cdot (\partial F) = \partial \cdot (\partial \wedge F) = \partial (\partial \wedge F) = 0,
+\end{equation}
+
+which means that $C \equiv \partial \wedge F$ is monogenic and $J$ is \emph{cohomologous} with $C$
+
+\begin{equation}
+  J - C = \partial F - C = \partial \cdot F,\label{eq:cohomologous}
+\end{equation}
+
+because their difference is coexact.
+
+Employing the integral theorem, $C$ has an antiderivative $H$ such that 
+
+\begin{equation}
+  C = \partial H.
+\end{equation}
+
+With $G \equiv F - H$, this implies that $F$ can then be written
+
+\begin{equation}
+  F = G + H\label{eq:harmonic-split}
+\end{equation}
+
+where $\partial G = \partial \cdot F$ and $\partial^2 H = 0$. Hence, $F$ fails to be closed by at most a harmonic term $H$.
+
+As an example, if $C$ is an r-vector field, then $C$ can be written $C = \partial \cdot (x \wedge C)/r = \partial \wedge (x \cdot C)/(n-r)$, and $C$ is both exact and coexact, in which case\footnote{Under what conditions are monogenic fields (co)exact?}
+
+\begin{equation}
+  J = \partial F = \partial \cdot (F + x \wedge C/r)
+\end{equation}
+
+is coexact --- although, $F$ is not closed. 
+
+If $C = 0$ on the boundary, then $C = 0$ everywhere, and its antiderivative is closed
+
+\begin{equation}
+  J = \partial F = \partial \cdot F. \label{eq:faithful}
+\end{equation}
+
+Let us call a field $J$ \emph{faithful} if its antiderivative is closed. Faithful fields are coexact, and all coclosed fields differ from faithful fields by at most a monogenic field, which depends solely on the manifold and boundary conditions. Note, however, that coexact fields are not necessarily faithful.
+
+\section{Maxwell's equations}
+
+Maxwell's equations follow from directly from the statement that \emph{``an electromagnetic field $F$ is a closed bivector field and its derivative is its current $J$,''} which means that
+
+\begin{equation}
+  \partial \wedge F = 0.
+\end{equation}
+
+This implies that its derivative $J$ is
+
+\begin{equation}
+  J = \partial F = \partial \cdot F,
+\end{equation} 
+
+which are Maxwell's equations with no magnetic monopoles or currents. As is well known, Maxwell's equations imply the continuity equation
+
+\begin{equation}
+  \partial \cdot J = \partial \cdot (\partial \cdot F) = 0, \label{eq:continuity}
+\end{equation} 
+
+which means charge is conserved. $F$ is the antiderivative of $J$, so to say that $F$ is closed is the same as saying $J$ is faithful. Hence, the above is equivalent to a dual statement \emph{``an electromagnetic current $J$ is a faithful vector field and its antiderivative is its electromagnetic field $F$.''}
+
+Suppose $J$ is a conserved current. Then by Equation \ref{ex:constraints} and Equation \ref{eq:harmonic-split}, its antiderivative $F$ can be decomposed into 
+
+\begin{equation}
+  F = F_0 + F_2,
+\end{equation}
+
+where $F_0$ is harmonic. 
+
+Equation \ref{eq:helmholtz} tells us that, in four dimensions, $J$ can be written
+
+\begin{align}
+  J = \partial F &= I^{-1} \left(\int g d^{4}x \cdot \partial^2 F - \oint g d^{3}x J \right).
+\end{align}
+
+If we integrate over all of spacetime, the boundary term vanishes for reasonable charge distributions, and $J$ is given by
+
+\begin{align}
+  J = \partial F &= I^{-1} \int g d^{4}x \cdot \partial^2 F,
+\end{align}
+
+which is only dependent on $\partial^2 F = \partial^2 (F_0 + F_2) = \partial^2 F_2$, since $F_0$ is harmonic. Hence, $J$ is independent of $F_0$, and $J$ can at last be written as 
+
+\begin{equation}
+  J = \nabla F = \nabla \cdot F,
+\end{equation}
+
+and $J$ is faithful.
+
+% Hence, if $J$ is conserved,
+
+% \begin{equation}
+%   J = \partial F = \partial \cdot F
+% \end{equation}
+
+% and
+
+% \begin{equation}
+%   \partial \wedge F = (-1)^{m} I^{-1} \oint g d^{m-1}x \partial \cdot F\right),
+% \end{equation}
+
 
   \begin{thebibliography}{9} 
 
@@ -114,9 +325,9 @@ Suppose $J_1$ is an conserved (i.e. divergenceless), integrable vector field. Th
       \emph{Clifford algebra to geometric calculus}.
       D. Reidel Publishing Company (1984).
 
-    \bibitem{gap} 
-      C. Doran and A. Lasenby.
-      \emph{Geometric Algebra for Physicists}. Cambridge University Press (2003).
+    % \bibitem{gap} 
+    %   C. Doran and A. Lasenby.
+    %   \emph{Geometric Algebra for Physicists}. Cambridge University Press (2003).
 
   \end{thebibliography}
 
