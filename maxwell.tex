@@ -8,7 +8,7 @@
 
 \begin{document}
 \maketitle
-\abstract{It is shown that the antiderivative of a divergence free multivector (e.g. vector, bivector, spinor) field fails to be curl free by at most a (generalized) harmonic function. This result implies that \emph{any} vector valued current density $J$ that is divergence free possesses a bivector valued antiderivative $F$ that satisfies $\partial F = J$ under suitable boundary conditions. In four dimensions, this is Maxwell's equation. This reinforces an existing result and generalizes to conserved currents on manifolds of arbitrary dimensions. This not only indicates that charge conservation is itself sufficient for an axiomatic foundation for Maxwell's equations; by means of Noether's theorem, this result associates to every symmetry in four dimensions a bivector field satisfying Maxwell's equations, up to specific units.}
+\abstract{The antiderivative of a divergence free multivector (e.g. vector, bivector, spinor) field is shown to fail to be curl free by at most a (generalized) harmonic function. This result implies that \emph{any} vector valued current density $J$ that is divergence free possesses a bivector valued antiderivative $F$ that satisfies $\partial F = J$ under suitable boundary conditions. In four dimensions, this is Maxwell's equation. This reinforces an existing result and generalizes to conserved currents on manifolds of arbitrary dimensions. This not only indicates that charge conservation is itself sufficient for an axiomatic foundation for Maxwell's equations; by means of Noether's theorem, this result associates to every symmetry in four dimensions a bivector field satisfying Maxwell's equations, up to specific units.}
 
 \paragraph{Work In Progress} This paper is a work in progress, and is being openly developed on Github at \url{https://github.com/lukeburns/maxwells-equations}. Contributions are warmly welcomed, whether by means of opening an issue or pull request.
 
@@ -55,13 +55,13 @@ The word \emph{form} will be reserved for scalar fields corresponding to some $n
 
 \section{Derivatives}
 
-A field $F$ is called \emph{curl free} (or, closed) when 
+A field $F$ is called \emph{curl free} (or closed) when 
 
 \begin{equation}
   \partial \wedge F = 0
 \end{equation}
 
-and \emph{divergence free} (or, coclosed) when 
+and \emph{divergence free} (or coclosed) when 
 
 \begin{equation}
   \partial \cdot F = 0,
@@ -141,7 +141,7 @@ and the constraints due to $J_{n-1} = J_{n+1} = 0$ are
   \partial \cdot F_{n-1} = \partial \wedge F_{n+1} = 0.\label{ex:constraints}
 \end{equation}
 
-Of course, $F$ \emph{could} contain terms of higher and lower grades, but they make no contribution to $J_n$. In this case, it will generally be of the form $F = F_{n-1} + F_{n+1} + C$.
+Of course, $F$ \emph{could} contain terms of higher and lower grades, but they make no contribution to $J_n$, so under the restriction that it only has grades which contribute to $J_n$, $F$ is of the form $F = F_{n-1} + F_{n+1}$.
 
 If $j_n$ and $f_n$ are the forms given by $J_n$ and $F_n$, then Equation \ref{ex:antiderivative} is equivalent to
 
@@ -211,9 +211,15 @@ and
   \partial \wedge F = (-1)^m I^{-1} \left(\int g d^{m}x \partial (\partial \wedge F) - \oint g d^{m-1}x \partial \wedge F\right),
 \end{equation}
 
-which gives a generalized Helmholtz decomposition into divergence free (or coclosed) and curl free (or closed) fields, $\partial \cdot F$ and $\partial \wedge F$ respectively. This is because $\partial \wedge (\partial \wedge M) = \partial \cdot (\partial \cdot M) = 0$ for any field $M$. 
+which gives a generalized Helmholtz decomposition into divergence free (or coclosed) and curl free (or closed) fields, $\partial \cdot F$ and $\partial \wedge F$ respectively. This is because $\partial \wedge (\partial \wedge M) = \partial \cdot (\partial \cdot M) = 0$ for any field $M$. Additionally, this decomposition comes with constraints given by Equation \ref{eq:constraints}.
 
-Additionally, this decomposition comes with constraints given by Equation \ref{eq:constraints}.
+A corresponding result for forms follows. If $J = J_n$ is an $n$-vector field with an antiderivative $F$, then
+
+\begin{equation}
+  j_n = \delta f_{n+1} + d f_{n-1},
+\end{equation}
+
+with the constraints $df_{n+1}=\delta f_{n-1} = 0$. Note that this is a stronger result than Hodge decomposition due to the constraints on $f_{n-1}$ and $f_{n+1}$, and it is \emph{not} restricted Riemannian manifolds.
 
 \section{Antiderivatives of divergence free fields} The above result implies that antiderivatives of divergence free fields fail to be curl free, and antiderivatives of curl free fields fail to be divergence free, by at most a harmonic function $H$ satisfying $\partial^2 H = 0$.
 
@@ -243,7 +249,7 @@ With $G \equiv F - H$, this implies that $F$ can then be written
   F = G + H\label{eq:harmonic-split}
 \end{equation}
 
-where $\partial G = \partial \cdot F$ and $\partial^2 H = 0$. Hence, $F$ fails to be curll free by at most a harmonic function $H$.
+where $\partial G = \partial \cdot F$ and $\partial^2 H = 0$. Hence, $F$ fails to be curl free by at most a harmonic function $H$.
 
 As an example, if $C$ is an r-vector field, then $C$ can be written $C = \partial \cdot (x \wedge C)/r = \partial \wedge (x \cdot C)/(n-r)$, and $C$ is both exact and coexact, in which case\footnote{Under what conditions are monogenic fields (co)exact?}
 
@@ -283,9 +289,9 @@ which are Maxwell's equations with no magnetic monopoles or currents. Of course,
 
 which means charge is conserved. 
 
-$F$ is the antiderivative of $J$, so to say that $F$ is curl free is the same as saying $J$ is faithful. Hence, the above is equivalent to a dual statement \emph{``an electromagnetic current $J$ is a faithful vector field and its antiderivative is its electromagnetic field $F$.''}
+$F$ is the antiderivative of $J$, so to say that $F$ is curl free is the same as saying $J$ is faithful. Hence, the above is equivalent to a dual statement \emph{``an electromagnetic current $J$ is a faithful vector field and its antiderivative is an electromagnetic field $F$.''}
 
-Suppose $J$ is a conserved current. Then by Equation \ref{ex:constraints} and Equation \ref{eq:harmonic-split}, its antiderivative $F$ can be decomposed into 
+Under suitable boundary conditions, a divergence free vector field is faithful. Suppose $J$ is a conserved current. Then by Equation \ref{ex:constraints} and Equation \ref{eq:harmonic-split}, its antiderivative $F$ can be decomposed into 
 
 \begin{equation}
   F = F_0 + F_2,
@@ -315,7 +321,8 @@ and $J$ is faithful.
 
 \section{Symmetry}
 
-Noether's theorem associatese to every symmetry a current $J$ satisfying $\partial \cdot J = 0$. Equation \ref{eq:integral-formula} provides a direct expression for the antiderivative $F$ of $J$ such that $\partial F = J$, which is a bivector satisfying Maxwell's equations (under suitable boundary conditions). \emph{What are the implications of this?}
+Noether's theorem associates to every symmetry a current $J$ satisfying $\partial \cdot J = 0$. Equation \ref{eq:integral-formula} provides a direct expression for the antiderivative $F$ of $J$ such that $\partial F = J$, which is a bivector satisfying Maxwell's equations (under suitable boundary conditions). \emph{What are the implications of this?}
+
 
   \begin{thebibliography}{9} 
 
@@ -337,14 +344,29 @@ Noether's theorem associatese to every symmetry a current $J$ satisfying $\parti
       D. Reidel Publishing Company (1984).
 
     \bibitem{sobczyk}
-    Sobczyk, G. \& Sánchez.
-    \emph{Fundamental Theorem of Calculus}.
-    O.L. Adv. Appl. Clifford Algebras Vol. 21, No. 221 (2011).
-    \url{https://arxiv.org/pdf/0809.4526.pdf}
+      Sobczyk, G. \& S\'anchez.
+      \emph{Fundamental Theorem of Calculus}.
+      O.L. Adv. Appl. Clifford Algebras Vol. 21, No. 221 (2011).
+      \url{https://arxiv.org/pdf/0809.4526.pdf}
 
     \bibitem{gap} 
       C. Doran and A. Lasenby.
       \emph{Geometric Algebra for Physicists}. Cambridge University Press (2003).
+
+    % \bibitem{extension}
+    %   L. Burns.
+    %   \emph{An extension of the Dirac equation}.
+    %   \url{https://github.com/lukeburns/dirac}.
+
+    % \bibitem{gauge-duality}
+    %   L. Burns.
+    %   \emph{Gauging duality symmetry}.
+    %   \url{https://github.com/lukeburns/gauge-duality}.
+
+    % \bibitem{electroweak}
+    %   D. Hestenes.
+    %   \emph{Space-Time Structure of Weak and Electromagnetic Interactions}.
+    %   Found. Physics Vol. 12 (1982).
 
   \end{thebibliography}
 
