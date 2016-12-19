@@ -37,7 +37,7 @@ The hodge star operation $*$ acts on fields as
   *F \equiv F^\dagger I,\label{eq:hodge}
 \end{equation}
 
-where $I$ is the pseudoscalar of some oriented vector manifold.
+where $I$ is the pseudoscalar of some oriented vector manifold.\footnote{See Chapter 4 of \cite{cagc}, or Section 6.5 of \cite{gap}.}
 
 The exterior derivative $d$ behaves identically to the curl
 
@@ -135,10 +135,10 @@ As an example, if $J = J_n$ is an $n$-vector field, then
   J_n = \partial F = \partial \cdot F_{n+1} + \partial \wedge F_{n-1},\label{ex:antiderivative}
 \end{equation}
 
-and the constraints due to $J_{n-1} = J_{n+1} = 0$ are
+and the constraints due to $J_{n-2} = J_{n+2} = 0$ and $F_{n-3} = F_{n+3} = 0$ are
 
 \begin{equation}
-  \partial \cdot F_{n-1} = \partial \wedge F_{n+1} = 0.\label{ex:constraints}
+  J_{n-2} = \partial \cdot F_{n-1} = 0 \text{ and } J_{n+2} = \partial \wedge F_{n+1} = 0.\label{ex:constraints}
 \end{equation}
 
 Of course, $F$ \emph{could} contain terms of higher and lower grades, but they make no contribution to $J_n$, so under the restriction that it only has grades which contribute to $J_n$, $F$ is of the form $F = F_{n-1} + F_{n+1}$.
@@ -159,7 +159,7 @@ Given potentials $f_{n-1}$ and $f_{n+1}$ under these constraints, one is in poss
 
 \section{The Fundamental Theorem}
 
-Let $\mathcal{M}$ be an m-dimensional smooth oriented vector manifold\footnote{See Chapter 4 of \cite{cagc}, or Section 6.5 of \cite{gap}.} with a piecewise smooth boundary $\partial \mathcal{M}$ and $L$ be a linear function, differentiable on $\mathcal{M}$ and $\partial \mathcal{M}$. Then, \cite{cagc} \cite{sobczyk} \cite{gap}
+Let $\mathcal{M}$ be an m-dimensional smooth oriented vector manifold with a piecewise smooth boundary $\partial \mathcal{M}$ and $L$ be a linear function, differentiable on $\mathcal{M}$ and $\partial \mathcal{M}$. Then, \cite{cagc} \cite{sobczyk} \cite{gap}
 
 \begin{equation}
   \int L(\dot x, d^mx \dot \partial) = \oint L(x, d^{m-1}x),\label{eq:fundamental-theorem}
