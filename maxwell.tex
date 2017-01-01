@@ -8,20 +8,20 @@
 
 \begin{document}
 \maketitle
-\abstract{The antiderivative of a divergence free multivector (e.g. vector, bivector, spinor) field is shown to fail to be curl free by at most a (generalized) harmonic function. This result implies that \emph{any} vector valued current density $J$ that is divergence free possesses a bivector valued antiderivative $F$ that satisfies $\partial F = J$ under suitable boundary conditions. In four dimensions, this is Maxwell's equation. This reinforces an existing result and generalizes to conserved currents on manifolds of arbitrary dimensions. This not only indicates that charge conservation is itself sufficient for an axiomatic foundation for Maxwell's equations; by means of Noether's theorem, this result associates to every symmetry in four dimensions a bivector field satisfying Maxwell's equations, up to specific units.}
+\abstract{The antiderivative of a divergence free (coclosed) multivector field is shown to be curl free (closed) up to a harmonic function. This result implies that \emph{any} vector valued current density $J$ that is divergence free possesses a bivector valued antiderivative $F$ that satisfies $\partial F = J$ under suitable boundary conditions. In four dimensions, this is Maxwell's equation. This reinforces an existing result indicating that charge conservation is sufficient as an axiomatic foundation for Maxwell's equations. By the same construction, it is shown that Louiville's theorem implies Hamilton's equations.}
 
 \paragraph{Work In Progress} This paper is a work in progress, and is being openly developed on Github at \url{https://github.com/lukeburns/maxwells-equations}. Contributions are warmly welcomed, whether by means of opening an issue or pull request.
 
 \section{Introduction}
 
 The question \emph{Can Maxwell’s equations be obtained from
-the continuity equation?} was first asked by Jos\'e A. Heras in \cite{heras}, who concluded \emph{yes} and provided a construction by means of a generalization of Helmholtz decomposition. In \cite{heras-axiomatic}, Heras presents an axiomatic approach to electrodynamics beginning with the continuity equation. The purpose of the current paper is to affirm and generalize the result of Heras to manifolds of any dimension by means of a generalized Helmholtz decomposition of geometric calculus, as well as to discuss its implications beyond electrodynamics.
+the continuity equation?} was first asked by Jos\'e A. Heras in \cite{heras}, who concluded \emph{yes} and provided a construction by means of a generalization of Helmholtz decomposition. The purpose of the present paper is to affirm and generalize the theorem of Heras to manifolds of any dimension by means of a generalized Helmholtz decomposition of geometric calculus.
 
-After establishing a mapping between $n$-vector fields and differential forms of degree $n$, which allows for the result of this paper to be translated directly into differential forms, I present two key results of geometric calculus: a generalized Integral Formula and Helmholtz decomposition for fields. 
+After establishing a mapping between $n$-vector fields and differential forms of degree $n$, which allows for the result of this paper to be translated into differential forms, I present the Fundamental Theorem of Geometric Calculus, and two consequences: a generalized Integral Formula and Helmholtz decomposition for fields.
 
 Using these results, I show that all divergence free fields fail to be coexact (i.e. the curl of some other field) by at most a monogenic term. Monogenic fields are characterized by the property that they are fully determined by boundary conditions, analogous to complex analytic functions. I present some conditions under which these fields are coexact. A field whose antiderivative is curl free is dubbed \emph{faithful}, by which it follows that the derivative of a curl free field is faithful, and the antiderivative of a faithful field is curl free. This establishes an equivalence between the statements ``an electromagnetic field $F$ is a curl free bivector field'' and ``an electromagnetic current $J$ is a faithful vector field,'' both of which fully determine the structure of Maxwell's equations. 
 
-I then show that a conserved vector field $J$ is faithful on a simple manifold of arbitrary dimension under suitable boundary conditions. Not only does this reinforce the result of Heras that the continuity equation implies Maxwell's equations; it points to an intimate connection between symmetry and bivector fields like Maxwell's. Noether's theorem associates to every symmetry a conserved current. In this paper, an explicit expression is given that associates to every conserved current a curl free bivector field that is its antiderivative. This means that to every symmetry there is an associated bivector field that is identical to an electromagnetic field, up to its units.
+I then show that a conserved vector field $J$ is faithful on a simple manifold of arbitrary dimension under suitable boundary conditions. This reinforce the result of Heras that the continuity equation implies Maxwell's equations.
 
 \section{Fields and forms} If $F_n \equiv \langle F \rangle_n$ is the grade $n$ part of the multivector field (hereafter, just field) $F = \sum F_n$ in an arbitrary geometric algebra $\mathcal{G}$, then its corresponding \emph{differential form $f_n$ of degree $n$} is a scalar field given by \cite{cagc}
 
@@ -67,7 +67,7 @@ and \emph{divergence free} (or coclosed) when
   \partial \cdot F = 0,
 \end{equation}
 
-where $\partial = \partial_x$ is the derivative with respect to the vector $x$. This operator is unique to geometric calculus, and the entire subject is a study of the properties of this operator. It's also often called the Dirac operator and can be written $\partial = e^k \partial_k$ where $\partial_k = \frac{\partial}{\partial x^k} = e_k \cdot \partial$ with respect to coordinates $x^k = e^k \cdot x$.\footnote{See p. 252 of \cite{cagc} for a coordinate free, integral definition of $\partial$.}
+where $\partial = \partial_x$ is the derivative with respect to the vector $x$. This operator is unique to geometric calculus, and the entire subject is a study of the properties of this operator. It's also often called the Dirac operator and can be written $\partial = e^k \partial_k$ where $\partial_k = \frac{\partial}{\partial x^k} = e_k \cdot \partial$ with respect to coordinates $x^k = e_k \cdot x$.\footnote{See p. 252 of \cite{cagc} for a coordinate free, integral definition of $\partial$.}
 
 A field for which
 
@@ -93,7 +93,7 @@ If a field $J$ is written as
   J = \partial \cdot G + \partial \wedge H,
 \end{equation}
 
-then $G$ and $H$ are called \emph{potentials} for $J$. By extension, if a form $\omega$ is given by
+then $G$ and $H$ are called \emph{potentials} for $J$. Similarly, if a form $\omega$ is given by
 
 \begin{equation}
   \omega = d \alpha + \delta \beta
@@ -189,11 +189,11 @@ Then $F$ is given by \cite{cagc}
   F(x) = (-1)^m I^{-1}(x) \left(\int g(x, x') d^{m}x' J(x') - \oint g(x, x') d^{m-1}x' F(x')\right),\label{eq:integral-formula}
 \end{equation}
 
-where $g$ is a Green's function of $\partial$ satisfying $\partial g(x,x') = - g(x, x') \partial' = \delta(x - x').$ This result says that \emph{any integrable field has an antiderivative, and it's given by Equation \ref{eq:integral-formula}}.
+where $g$ is a Green's function of $\partial$ satisfying $\partial g(x,x') = - g(x, x') \partial' = \delta(x - x').$ This result says that \emph{any integrable field has an antiderivative (locally), and it's given by Equation \ref{eq:integral-formula}}.
 
 \section{Helmholtz decomposition}
 
-The integral forumla tells us that $J$ has an antiderivative $F$ such that
+The integral formula tells us that $J$ has an antiderivative $F$ such that
 
 \begin{align}
   J = \partial F = \partial \cdot F + \partial \wedge F &= (-1)^m I^{-1} \left(\int g d^{m}x \partial^2 F - \oint g d^{m-1}x \partial F\right).\label{eq:helmholtz}
@@ -221,7 +221,7 @@ A corresponding result for forms follows. If $J = J_n$ is an $n$-vector field wi
 
 with the constraints $df_{n+1}=\delta f_{n-1} = 0$. Note that this is a stronger result than Hodge decomposition due to the constraints on $f_{n-1}$ and $f_{n+1}$, and it is \emph{not} restricted Riemannian manifolds.
 
-\section{Antiderivatives of divergence free fields} The above result implies that antiderivatives of divergence free fields fail to be curl free, and antiderivatives of curl free fields fail to be divergence free, by at most a harmonic function $H$ satisfying $\partial^2 H = 0$.
+\section{Divergence free fields}The above result implies that antiderivatives of divergence free fields fail to be curl free, and antiderivatives of curl free fields fail to be divergence free, by at most a harmonic function $H$ satisfying $\partial^2 H = 0$.
 
 Suppose $J = \partial F$ is divergence free (the dual result for curl free fields follows analogously). Then, 
 
@@ -254,7 +254,7 @@ where $\partial G = \partial \cdot F$ and $\partial^2 H = 0$. Hence, $F$ fails t
 As an example, if $C$ is an r-vector field, then $C$ can be written $C = \partial \cdot (x \wedge C)/r = \partial \wedge (x \cdot C)/(n-r)$, and $C$ is both exact and coexact, in which case\footnote{Under what conditions are monogenic fields (co)exact?}
 
 \begin{equation}
-  J = \partial F = \partial \cdot (F + x \wedge C/r)
+  J = \partial F = \partial \cdot (F + x \wedge C/r)\label{eq:unfaithful}
 \end{equation}
 
 is coexact --- although, $F$ is not curl free. 
@@ -265,9 +265,51 @@ If $C = 0$ on the boundary, then $C = 0$ everywhere, and its antiderivative is c
   J = \partial F = \partial \cdot F. \label{eq:faithful}
 \end{equation}
 
-Let us call a field $J$ \emph{faithful} if its antiderivative is curl free. Faithful fields are coexact, and all divergence free fields differ from faithful fields by at most a monogenic field, which depends solely on the manifold and boundary conditions. Note, however, that coexact fields are not necessarily faithful. Of course, we might choose to call a field the antiderivative that is divergence free \emph{cofaithful}, though that admittedly doesn't quite have the same ring to it.\footnote{Might be better to abandon the word faithful altogether for something more descriptive.}
+Let us call a field $J$ \emph{faithful} if its antiderivative is curl free. Faithful fields are coexact, and all divergence free fields differ from faithful fields by at most a monogenic field, which depends solely on the manifold and boundary conditions. Note, however, that coexact fields are not necessarily faithful. Of course, let's call a field the antiderivative of which is divergence free \emph{cofaithful}.\footnote{Might be better to abandon the word faithful altogether for something more descriptive.}
 
-\section{Maxwell's equations}
+\section{Conserved currents}
+
+Consider the specific case of a divergence free vector field $J$ (i.e. a conserved current). By Equation \ref{ex:constraints} and Equation \ref{eq:harmonic-split}, any antiderivative $F$ of $J$ can be decomposed into 
+
+\begin{equation}
+  F = F_0 + F_2,
+\end{equation}
+
+where $F_0$ is harmonic. Hence, Equation \ref{eq:unfaithful} implies that
+
+\begin{equation}
+  \partial F = \partial \cdot (F_2 + x \wedge \partial F_0) = J, \label{eq:coexact}
+\end{equation}
+
+where $\partial \wedge F_2 = 0$ and $\partial^2 F_0 = 0$, which holds for all divergence free vector fields. In the language of differential forms, this can be written
+
+\begin{equation}
+  d f_2 = 0 \text{ and } \delta h = j,
+\end{equation}
+
+where $h \equiv \widetilde{d^{2}x} \cdot (F_2 + x \wedge \partial F_0)$. Every conserved current satisfies these equations in regions of the manifold where $J$ is integrable.
+
+Furthermore, on suitable manifolds and under suitable boundary conditions, $J$ is faithful. Equation \ref{eq:helmholtz} tells us that $J$ can be written
+
+\begin{align}
+  J = \partial F &= (-1)^m I^{-1} \left(\int g d^{m}x \partial^2 F - \oint g d^{m-1}x J \right).
+\end{align}
+
+If the boundary term vanishes, then $J$ is given by
+
+\begin{align}
+  J = \partial F &= (-1)^m I^{-1} \int g d^{m}x \partial^2 F,
+\end{align}
+
+which is only dependent on $\partial^2 F = \partial^2 (F_0 + F_2) = \partial^2 F_2$, since $F_0$ is harmonic. Hence, $J$ is independent of $F_0$, and $J$ can be written as 
+
+\begin{equation}
+  J = \partial F = \partial \cdot F,
+\end{equation}
+
+and $J$ is faithful.
+
+\paragraph{Maxwell's equations}
 
 Maxwell's equations follow from directly from the statement that \emph{``an electromagnetic field $F$ is a curl free bivector field and its derivative is its current $J$.''} To say that it is curl free means that
 
@@ -289,40 +331,29 @@ which are Maxwell's equations with no magnetic monopoles or currents. Of course,
 
 which means charge is conserved. 
 
-$F$ is the antiderivative of $J$, so to say that $F$ is curl free is the same as saying $J$ is faithful. Hence, the above is equivalent to a dual statement \emph{``an electromagnetic current $J$ is a faithful vector field and its antiderivative is an electromagnetic field $F$.''}
+$F$ is an antiderivative of $J$, so to say that $F$ is curl free is the same as saying $J$ is faithful. Hence, the above characterization is equivalent to the dual statement \emph{``an electromagnetic current $J$ is a faithful vector field and its antiderivative is an electromagnetic field $F$.''}
 
-Under suitable boundary conditions, a divergence free vector field is faithful. Suppose $J$ is a conserved current. Then by Equation \ref{ex:constraints} and Equation \ref{eq:harmonic-split}, its antiderivative $F$ can be decomposed into 
+\paragraph{Hamilton's equations}
 
-\begin{equation}
-  F = F_0 + F_2,
-\end{equation}
-
-where $F_0$ is harmonic.
-
-Equation \ref{eq:helmholtz} tells us that, in four dimensions, $J$ can be written
-
-\begin{align}
-  J = \partial F &= I^{-1} \left(\int g d^{4}x \partial^2 F - \oint g d^{3}x J \right).
-\end{align}
-
-If we integrate over all of spacetime, the boundary term vanishes for suitable charge distributions, and $J$ is given by
-
-\begin{align}
-  J = \partial F &= I^{-1} \int g d^{4}x \partial^2 F,
-\end{align}
-
-which is only dependent on $\partial^2 F = \partial^2 (F_0 + F_2) = \partial^2 F_2$, since $F_0$ is harmonic. Hence, $J$ is independent of $F_0$, and $J$ can at last be written as 
+A key result of Hamiltonian mechanics is Liouville's theorem. In \cite{hestenes-hamilton}, Hestenes showed that Liouville's theorem is given by
 
 \begin{equation}
-  J = \partial F = \partial \cdot F,
+  \partial \cdot \dot x = 0,\label{eq:hamilton-continuity}
 \end{equation}
 
-and $J$ is faithful.
+where the vector $x = p + q \cdot J$ is a point in phase space represented as a $2n$-dimensional manifold $\mathcal{M}^{2n}$ equipped with a symplectic bivector $J$ (this differs from the convention used throughout this paper).
 
-\section{Symmetry}
+By Equation \ref{eq:coexact}, this continuity equation implies the existence of a bivector field $\Omega$ satisfying
 
-Noether's theorem associates to every symmetry a current $J$ satisfying $\partial \cdot J = 0$. Equation \ref{eq:integral-formula} provides a direct expression for the antiderivative $F$ of $J$ such that $\partial F = J$, which is a bivector satisfying Maxwell's equations (under suitable boundary conditions). \emph{What are the implications of this?}
+\begin{equation}
+  \dot x = \partial \cdot \Omega. \label{eq:hamiltons-equations}
+\end{equation}
 
+Indeed, Hestenes showed in \cite{hestenes-hamilton} that Hamilton's equations can be written in this form with $\Omega = H J$, where the hamiltonian $H$ acts as an integrating factor for $J$.\footnote{Hestenes actually wrote this as $\dot x = \nabla \cdot \Omega = \underline P (\partial \cdot \Omega)$, which is the projection of Equation \ref{eq:hamiltons-equations} into the tangent algebra of $\mathcal{M}^{2n}$.}
+
+% \section{Symmetry}
+
+% Noether's theorem associates to every symmetry a current $J$ satisfying $\partial \cdot J = 0$. Equation \ref{eq:integral-formula} provides a direct expression for the antiderivative $F$ of $J$ such that $\partial F = J$, which is a bivector satisfying Maxwell's equations (under suitable boundary conditions). \emph{What are the implications of this?}
 
   \begin{thebibliography}{9} 
 
@@ -332,11 +363,11 @@ Noether's theorem associates to every symmetry a current $J$ satisfying $\partia
       Am. J. Phys. Vol. 75, No. 7. (2007).
       \url{https://arxiv.org/pdf/0812.4785.pdf}
 
-    \bibitem{heras-axiomatic}
-      J. Heras.
-      \emph{An axiomatic approach to Maxwell’s equations}.
-      Eur. J. Phys. Vol. 37, No. 5. (2016).
-      \url{https://arxiv.org/pdf/1608.00659.pdf}
+    % \bibitem{heras-axiomatic}
+    %   J. Heras.
+    %   \emph{An axiomatic approach to Maxwell’s equations}.
+    %   Eur. J. Phys. Vol. 37, No. 5. (2016).
+    %   \url{https://arxiv.org/pdf/1608.00659.pdf}
 
     \bibitem{cagc}
       D. Hestenes.
@@ -367,6 +398,12 @@ Noether's theorem associates to every symmetry a current $J$ satisfying $\partia
     %   D. Hestenes.
     %   \emph{Space-Time Structure of Weak and Electromagnetic Interactions}.
     %   Found. Physics Vol. 12 (1982).
+
+    \bibitem{hestenes-hamilton}
+      D. Hestenes.
+      \emph{Hamiltonian Mechanics with Geometric Calculus}.
+       Z. Oziewicz et al (eds.), Spinors, Twistors, Clifford Algebras and Quantum Deformations, Kluwer: Dordercht/Boston (1993), 203–214.
+
 
   \end{thebibliography}
 
