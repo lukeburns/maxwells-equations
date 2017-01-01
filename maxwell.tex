@@ -17,11 +17,13 @@
 The question \emph{Can Maxwell’s equations be obtained from
 the continuity equation?} was first asked by Jos\'e A. Heras in \cite{heras}, who concluded \emph{yes} and provided a construction by means of a generalization of Helmholtz decomposition. The purpose of the present paper is to affirm and generalize the theorem of Heras to manifolds of any dimension by means of a generalized Helmholtz decomposition of geometric calculus.
 
-After establishing a mapping between $n$-vector fields and differential forms of degree $n$, which allows for the result of this paper to be translated into differential forms, I present the Fundamental Theorem of Geometric Calculus, and two consequences: a generalized Integral Formula and Helmholtz decomposition for fields.
+After establishing a mapping between $n$-vector fields and differential forms of degree $n$, which allows for the result of this paper to be translated into differential forms, I present the Fundamental Theorem of Geometric Calculus, and two consequences: a generalized Integral Formula and Helmholtz decomposition for multivector fields.
 
 Using these results, I show that all divergence free fields fail to be coexact (i.e. the curl of some other field) by at most a monogenic term. Monogenic fields are characterized by the property that they are fully determined by boundary conditions, analogous to complex analytic functions. I present some conditions under which these fields are coexact. A field whose antiderivative is curl free is dubbed \emph{faithful}, by which it follows that the derivative of a curl free field is faithful, and the antiderivative of a faithful field is curl free. This establishes an equivalence between the statements ``an electromagnetic field $F$ is a curl free bivector field'' and ``an electromagnetic current $J$ is a faithful vector field,'' both of which fully determine the structure of Maxwell's equations. 
 
-I then show that a conserved vector field $J$ is faithful on a simple manifold of arbitrary dimension under suitable boundary conditions. This reinforce the result of Heras that the continuity equation implies Maxwell's equations.
+I then show that a conserved vector field $J$ is faithful on a simple manifold of arbitrary dimension under suitable boundary conditions. This reinforces the result of Heras that the continuity equation implies Maxwell's equations.
+
+Lastly, Hamilton's equations are shown to follow from Liouville's theorem.
 
 \section{Fields and forms} If $F_n \equiv \langle F \rangle_n$ is the grade $n$ part of the multivector field (hereafter, just field) $F = \sum F_n$ in an arbitrary geometric algebra $\mathcal{G}$, then its corresponding \emph{differential form $f_n$ of degree $n$} is a scalar field given by \cite{cagc}
 
@@ -343,13 +345,13 @@ A key result of Hamiltonian mechanics is Liouville's theorem. In \cite{hestenes-
 
 where the vector $x = p + q \cdot J$ is a point in phase space represented as a $2n$-dimensional manifold $\mathcal{M}^{2n}$ equipped with a symplectic bivector $J$ (this differs from the convention used throughout this paper).
 
-By Equation \ref{eq:coexact}, this continuity equation implies the existence of a bivector field $\Omega$ satisfying
+Equation \ref{eq:coexact} provides an expression for a bivector field $\Omega$ that satisfies
 
 \begin{equation}
   \dot x = \partial \cdot \Omega. \label{eq:hamiltons-equations}
 \end{equation}
 
-Indeed, Hestenes showed in \cite{hestenes-hamilton} that Hamilton's equations can be written in this form with $\Omega = H J$, where the hamiltonian $H$ acts as an integrating factor for $J$.\footnote{Hestenes actually wrote this as $\dot x = \nabla \cdot \Omega = \underline P (\partial \cdot \Omega)$, which is the projection of Equation \ref{eq:hamiltons-equations} into the tangent algebra of $\mathcal{M}^{2n}$.}
+Hestenes showed in \cite{hestenes-hamilton} that Hamilton's equations can be written in this form with $\Omega = H J$, where the hamiltonian $H$ acts as an integrating factor for $J$.\footnote{Hestenes actually wrote this as $\dot x = \nabla \cdot \Omega = \underline P (\partial \cdot \Omega)$, which is the projection of Equation \ref{eq:hamiltons-equations} into the tangent algebra of $\mathcal{M}^{2n}$.}
 
 % \section{Symmetry}
 
