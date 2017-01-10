@@ -1,29 +1,36 @@
-\documentclass{article}
-\usepackage[margin=1in]{geometry}
+\documentclass[twocolumn]{article}
+\usepackage[margin=.7in]{geometry}
 \usepackage{amsmath}
-\usepackage{hyperref}
 
-\title{The Continuity Equation Implies Maxwell's Equations}
+\usepackage{hyperref}
+\renewcommand{\abstractname}{\vspace{-\baselineskip}}
+\usepackage{sectsty}
+\sectionfont{\fontsize{12}{15}\selectfont}
+
+\title{Does the Continuity Equation Imply Maxwell's Equations?}
 \author{Luke Burns}
+\date{\small \today\vspace{-5ex}}
 
 \begin{document}
-\maketitle
-\abstract{The antiderivative of a divergence free (coclosed) multivector field is shown to be curl free (closed) up to a harmonic function. This result implies that \emph{any} vector valued current density $J$ that is divergence free possesses a bivector valued antiderivative $F$ that satisfies $\partial F = J$ under suitable boundary conditions. In four dimensions, this is Maxwell's equation. This reinforces an existing result indicating that charge conservation is sufficient as an axiomatic foundation for Maxwell's equations. By the same construction, it is shown that Louiville's theorem implies Hamilton's equations.}
+\twocolumn[
+\begin{@twocolumnfalse}
+  \maketitle
+  \abstract{The antiderivative of a divergence free (coclosed) multivector field is shown to be curl free (closed) up to a harmonic function. This result implies that \emph{any} vector valued current density $J$ that is divergence free possesses a bivector valued antiderivative $F$ that satisfies $\partial F = J$ under suitable boundary conditions. In four dimensions, this is Maxwell's equation. This reinforces an existing result indicating that charge conservation is sufficient as an axiomatic foundation for Maxwell's equations.}
 
-\paragraph{Work In Progress} This paper is a work in progress, and is being openly developed on Github at \url{https://github.com/lukeburns/maxwells-equations}. Contributions are warmly welcomed, whether by means of opening an issue or pull request.
+  \paragraph{Work In Progress} This paper is a work in progress and is being openly developed on Github at \url{https://github.com/lukeburns/maxwells-equations}. Contributions are warmly welcomed, whether by means of opening an issue or pull request. \\
+\end{@twocolumnfalse}
+]
 
 \section{Introduction}
 
-The question \emph{Can Maxwell’s equations be obtained from
+\indent The question \emph{Can Maxwell’s equations be obtained from
 the continuity equation?} was first asked by Jos\'e A. Heras in \cite{heras}, who concluded \emph{yes} and provided a construction by means of a generalization of Helmholtz decomposition. The purpose of the present paper is to affirm and generalize the theorem of Heras to manifolds of any dimension by means of a generalized Helmholtz decomposition of geometric calculus.
 
-After establishing a mapping between $n$-vector fields and differential forms of degree $n$, which allows for the result of this paper to be translated into differential forms, I present the Fundamental Theorem of Geometric Calculus, and two consequences: a generalized Integral Formula and Helmholtz decomposition for multivector fields.
+After establishing a mapping between $n$-vector fields and differential forms of degree $n$, which allows for the result of this paper to be translated into differential forms, I present the Fundamental Theorem of Geometric Calculus, and two consequences: a generalization of Cauchy's Integral Formula and Helmholtz decomposition for multivector fields.
 
-Using these results, I show that all divergence free fields fail to be coexact (i.e. the curl of some other field) by at most a monogenic term. Monogenic fields are characterized by the property that they are fully determined by boundary conditions, analogous to complex analytic functions. I present some conditions under which these fields are coexact. A field whose antiderivative is curl free is dubbed \emph{faithful}, by which it follows that the derivative of a curl free field is faithful, and the antiderivative of a faithful field is curl free. This establishes an equivalence between the statements ``an electromagnetic field $F$ is a curl free bivector field'' and ``an electromagnetic current $J$ is a faithful vector field,'' both of which fully determine the structure of Maxwell's equations. 
+Using these results, I show that all divergence free (coclosed) fields fail to be coexact (i.e. the curl of some other field) by at most a monogenic term. Monogenic fields are characterized by the property that they are fully determined by boundary conditions, analogous to complex analytic functions. I present some conditions under which these fields are coexact. A field whose antiderivative is curl free is dubbed \emph{faithful}, by which it follows that the derivative of a curl free field is faithful, and the antiderivative of a faithful field is curl free. This establishes an equivalence between the statements ``an electromagnetic field $F$ is a curl free bivector field'' and ``an electromagnetic current $J$ is a faithful vector field,'' both of which fully determine the structure of Maxwell's equations. 
 
 I then show that a conserved vector field $J$ is faithful on a simple manifold of arbitrary dimension under suitable boundary conditions. This reinforces the result of Heras that the continuity equation implies Maxwell's equations.
-
-Lastly, Hamilton's equations are shown to follow from Liouville's theorem.
 
 \section{Fields and forms} If $F_n \equiv \langle F \rangle_n$ is the grade $n$ part of the multivector field (hereafter, just field) $F = \sum F_n$ in an arbitrary geometric algebra $\mathcal{G}$, then its corresponding \emph{differential form $f_n$ of degree $n$} is a scalar field given by \cite{cagc}
 
@@ -77,7 +84,7 @@ A field for which
   \partial F = \partial \cdot F + \partial \wedge F = 0
 \end{equation}
 
-is called \emph{monogenic}. It possesses the property of complex analytic functions that, in any region, it is fully determined by its values on the boundary of that region. Hence, the form $\omega$ is closed if $d \omega = 0$, coclosed if $\delta \omega = 0$, and monogenic if $d \omega = \delta \omega = 0$.
+is called \emph{monogenic}. It possesses the property of complex analytic functions that, in any region, it is fully determined by its values on the boundary of that region. Hence, the form $\omega$ is closed if $d \omega = 0$, coclosed if $\delta \omega = 0$, and monogenic if $d \omega = \delta \omega = 0$. Note that for general fields, $\partial F = 0$ does not necessarily imply that $\nabla \cdot F = \nabla \wedge F = 0$.
 
 A field $H$ that satisfies
 
@@ -125,7 +132,7 @@ A field $F$ is called an \emph{antiderivative} of $J$ if
   J = \partial F = \partial \cdot F + \partial \wedge F,\label{eq:antiderivative}
 \end{equation}
 
-which is unique up to a monogenic term. That is, $F + C$ such that $\partial C = 0$ is also an antiderivative. Furthermore, given an antiderivative, one has possession of constraints on $F$. For every $J_k = 0$,
+which is unique up to a monogenic term. That is, $F + C$ such that $\partial C = 0$ is also an antiderivative. Furthermore, given an antiderivative, one has possession of constraints on $F$. For every $J_k = 0$ (again, where $J_k = \langle J \rangle_k$ is the $k$-grade part of J),
 
 \begin{equation}
   J_k = \partial \cdot F_{k+1} + \partial \wedge F_{k-1} = 0.\label{eq:constraints}
@@ -143,9 +150,13 @@ and the constraints due to $J_{n-2} = J_{n+2} = 0$ and $F_{n-3} = F_{n+3} = 0$ a
   J_{n-2} = \partial \cdot F_{n-1} = 0 \text{ and } J_{n+2} = \partial \wedge F_{n+1} = 0.\label{ex:constraints}
 \end{equation}
 
-Of course, $F$ \emph{could} contain terms of higher and lower grades, but they make no contribution to $J_n$, so under the restriction that it only has grades which contribute to $J_n$, $F$ is of the form $F = F_{n-1} + F_{n+1}$.
+Of course, $F$ \emph{could} contain terms of higher and lower grades as long as they vanish under the derivative, but they make no contribution to $J_n$. Under the restriction that it only has grades which contribute to $J_n$, $F$ is of the form 
 
-If $j_n$ and $f_n$ are the forms given by $J_n$ and $F_n$, then Equation \ref{ex:antiderivative} is equivalent to
+\begin{equation}
+  F = F_{n-1} + F_{n+1}.
+\end{equation}
+
+If $j_n$ and $f_n$ are the forms given by $J_n$ and $F_n$, then Equations \ref{eq:curl} and \ref{eq:divergence} imply that, in terms of differential forms, Equation \ref{ex:antiderivative} is of the form
 
 \begin{equation}
   j_n = -\delta f_{n+1} + d f_{n-1},
@@ -167,15 +178,11 @@ Let $\mathcal{M}$ be an m-dimensional smooth oriented vector manifold with a pie
   \int L(\dot x, d^mx \dot \partial) = \oint L(x, d^{m-1}x),\label{eq:fundamental-theorem}
 \end{equation}
 
-where $L(\dot x, d^mx \dot \partial)$ denotes right and left differentiation all $x$ dependent terms in $L$ by $\partial$.
-
-Stokes' theorem of differential forms is
+where $L(\dot x, d^mx \dot \partial)$ denotes right and left differentiation all $x$ dependent terms in $L$ by $\partial$. Note that the linear function $L$ is multivector-valued and Stokes' theorem of differential forms is given equivalent to the scalar valued part of this equation:
 
 \begin{equation}
-  \int \langle L(\dot x, d^mx \dot \partial)\rangle = \oint \langle L(x, d^{m-1}x)\rangle,
+  \int \langle L(\dot x, d^mx \dot \partial)\rangle = \oint \langle L(x, d^{m-1}x)\rangle.
 \end{equation}
-
-for scalar valued integrands.
 
 \section{Integral Formula}
 
@@ -187,19 +194,22 @@ Let $J$ be a field on a simple (not self-intersecting) manifold $\mathcal{M}$ su
 
 Then $F$ is given by \cite{cagc}
 
-\begin{equation}
-  F(x) = (-1)^m I^{-1}(x) \left(\int g(x, x') d^{m}x' J(x') - \oint g(x, x') d^{m-1}x' F(x')\right),\label{eq:integral-formula}
-\end{equation}
+\begin{align}
+  \begin{split}
+    F(x) = & +(-1)^{m} I^{-1}(x) \int g(x, x') d^{m}x' J(x') \\
+    &- (-1)^{m} I^{-1}(x) \oint g(x, x') d^{m-1}x' F(x'),\label{eq:integral-formula}
+  \end{split}
+\end{align}
 
-where $g$ is a Green's function of $\partial$ satisfying $\partial g(x,x') = - g(x, x') \partial' = \delta(x - x').$ This result says that \emph{any integrable field has an antiderivative (locally), and it's given by Equation \ref{eq:integral-formula}}.
+where $g$ is a Green's function of $\partial$ satisfying $\partial g(x,x') = - g(x, x') \partial' = \delta(x - x').$ This result says that \emph{any integrable field has a local antiderivative, and it's given by Equation \ref{eq:integral-formula}}.
 
 \section{Helmholtz decomposition}
 
 The integral formula tells us that $J$ has an antiderivative $F$ such that
-
 \begin{align}
-  J = \partial F = \partial \cdot F + \partial \wedge F &= (-1)^m I^{-1} \left(\int g d^{m}x \partial^2 F - \oint g d^{m-1}x \partial F\right).\label{eq:helmholtz}
-\end{align}
+    J &= \partial F = \partial \cdot F + \partial \wedge F \\ 
+      &= (-1)^m I^{-1} \left(\int g d^{m}x \partial^2 F - \oint g d^{m-1}x \partial F\right).\label{eq:helmholtz}
+  \end{align}
 
 In addition, we can say
 
@@ -215,7 +225,7 @@ and
 
 which gives a generalized Helmholtz decomposition into divergence free (or coclosed) and curl free (or closed) fields, $\partial \cdot F$ and $\partial \wedge F$ respectively. This is because $\partial \wedge (\partial \wedge M) = \partial \cdot (\partial \cdot M) = 0$ for any field $M$. Additionally, this decomposition comes with constraints given by Equation \ref{eq:constraints}.
 
-A corresponding result for forms follows. If $J = J_n$ is an $n$-vector field with an antiderivative $F$, then
+The corresponding result for forms is that (locally), for any $n$-form $j_n$, there exists an $n+1$-form $f_{n+1}$ and an $n-1$-form $f_{n-1}$, such that
 
 \begin{equation}
   j_n = -\delta f_{n+1} + d f_{n-1},
@@ -223,15 +233,17 @@ A corresponding result for forms follows. If $J = J_n$ is an $n$-vector field wi
 
 with the constraints $df_{n+1}=\delta f_{n-1} = 0$. Note that this is a stronger result than Hodge decomposition due to the constraints on $f_{n-1}$ and $f_{n+1}$, and it is \emph{not} restricted Riemannian manifolds.
 
-\section{Divergence free fields}The above result implies that antiderivatives of divergence free fields fail to be curl free, and antiderivatives of curl free fields fail to be divergence free, by at most a harmonic function $H$ satisfying $\partial^2 H = 0$.
+\section{Divergence and curl free fields}
 
-Suppose $J = \partial F$ is divergence free (the dual result for curl free fields follows analogously). Then, 
+The above result implies that antiderivatives of divergence free fields fail to be curl free, and antiderivatives of curl free fields fail to be divergence free, by at most a harmonic function $H$ satisfying $\partial^2 H = 0$.
+
+Suppose $J$ is divergence free (the dual result for curl free fields follows analogously). By the integral formula, it has a local antiderivative $F$, such that $J = \partial F$. Hence,
 
 \begin{equation}
-  \partial \cdot J = \partial \cdot (\partial F) = \partial \cdot (\partial \wedge F) = \partial (\partial \wedge F) = 0,
+  \partial \cdot J = \partial \cdot (\partial F) = \partial \cdot (\partial \cdot F + \partial \wedge F) = \partial \cdot (\partial \wedge F) = \partial (\partial \wedge F) = 0,
 \end{equation}
 
-which means that $C \equiv \partial \wedge F$ is monogenic and $J$ is homologous with $C$
+which means that $C \equiv \partial \wedge F$ is monogenic and $J$ is locally homologous with $C$
 
 \begin{equation}
   J - C = \partial F - C = \partial \cdot F,\label{eq:homologous}
@@ -251,15 +263,15 @@ With $G \equiv F - H$, this implies that $F$ can then be written
   F = G + H\label{eq:harmonic-split}
 \end{equation}
 
-where $\partial G = \partial \cdot F$ and $\partial^2 H = 0$. Hence, $F$ fails to be curl free by at most a harmonic function $H$.
+where $\partial G = \partial \cdot F$ and $\partial^2 H = 0$. Note that if $H=0$, then $\partial F = \partial \cdot F$. Hence, $F$ fails to be curl free by at most a harmonic function $H$.
 
-As an example, if $C$ is an r-vector field, then $C$ can be written $C = \partial \cdot (x \wedge C)/r = \partial \wedge (x \cdot C)/(n-r)$, and $C$ is both exact and coexact, in which case\footnote{Under what conditions are general monogenic multivector fields exact / coexact?}
+As an example, if $C$ is a monogenic r-vector field, then $C$ can be written $C = \partial \cdot (x \wedge C)/r = \partial \wedge (x \cdot C)/(n-r)$, and $C$ is both exact and coexact, in which case\footnote{Under what conditions are general monogenic multivector fields exact / coexact?}
 
 \begin{equation}
   J = \partial F = \partial \cdot (F + x \wedge C/r)\label{eq:unfaithful}
 \end{equation}
 
-is coexact --- although, $F$ is not curl free. 
+is locally coexact --- although, $F$ is not curl free. 
 
 If $C = 0$ on the boundary, then $C = 0$ everywhere, and its antiderivative is curl free
 
@@ -267,7 +279,25 @@ If $C = 0$ on the boundary, then $C = 0$ everywhere, and its antiderivative is c
   J = \partial F = \partial \cdot F. \label{eq:faithful}
 \end{equation}
 
-Let us call a field $J$ \emph{faithful} if its antiderivative is curl free. Faithful fields are coexact, and all divergence free fields differ from faithful fields by at most a monogenic field, which depends solely on the manifold and boundary conditions. Note, however, that coexact fields are not necessarily faithful. Of course, let's call a field the antiderivative of which is divergence free \emph{cofaithful}.\footnote{Might be better to abandon the word faithful altogether for something more descriptive.}
+Let us call a field $J$ \emph{faithful} if its antiderivative is curl free. Faithful fields are coexact, and all divergence free fields differ from faithful fields by at most a monogenic field, which depends solely on the manifold and boundary conditions. Note, however, that coexact fields are not necessarily faithful. 
+
+A form is faithful if
+
+\begin{equation}
+  j = - \delta f \text { and } df = 0.
+\end{equation}
+
+A field $J$ with a divergence free antiderivative $F$ is \emph{cofaithful} and can be written
+
+\begin{equation}
+  J = \partial F = \partial \wedge F,
+\end{equation}
+
+and hence, a form is cofaithful if
+
+\begin{equation}
+  j = df \text{ and } \delta f = 0.
+\end{equation}
 
 \section{Conserved currents}
 
@@ -291,16 +321,16 @@ where $\partial \wedge F_2 = 0$ and $\partial^2 F_0 = 0$, which holds for all di
 
 where $h \equiv \widetilde{d^{2}x} \cdot (F_2 + x \wedge \partial F_0)$. Every conserved current satisfies these equations in regions of the manifold where $J$ is integrable.
 
-Furthermore, on suitable manifolds and under suitable boundary conditions, $J$ is faithful. Equation \ref{eq:helmholtz} tells us that $J$ can be written
+Furthermore, on suitable manifolds and under suitable boundary conditions, $J$ is locally faithful. Equation \ref{eq:helmholtz} tells us that $J$ can be written
 
 \begin{align}
-  J = \partial F &= (-1)^m I^{-1} \left(\int g d^{m}x \partial^2 F - \oint g d^{m-1}x J \right).
+  J = \partial F &= (-1)^m I^{-1} \left(\int g d^{m}x \partial^2 F - \oint g d^{m-1}x J \right).\label{eq:conditions}
 \end{align}
 
 If the boundary term vanishes, then $J$ is given by
 
 \begin{align}
-  J = \partial F &= (-1)^m I^{-1} \int g d^{m}x \partial^2 F,
+  J = \partial F &= (-1)^m I^{-1} \int g d^{m}x \partial^2 F,\label{eq:satisfied}
 \end{align}
 
 which is only dependent on $\partial^2 F = \partial^2 (F_0 + F_2) = \partial^2 F_2$, since $F_0$ is harmonic. Hence, $J$ is independent of $F_0$, and $J$ can be written as 
@@ -335,7 +365,9 @@ which means charge is conserved.
 
 $F$ is an antiderivative of $J$, so to say that $F$ is curl free is the same as saying $J$ is faithful. Hence, the above characterization is equivalent to the dual statement \emph{``an electromagnetic current $J$ is a faithful vector field and its antiderivative is an electromagnetic field $F$.''}
 
-\paragraph{Hamilton's equations}
+Equation \ref{eq:conditions} provides a condition under which $J$ is faithful. For instance, if $J$ vanishes at infinity, then $J$ is a faithful vector field and hence implies Maxwell's equations. This affirms the result of Heras.\cite{heras}
+
+\paragraph{Note on Hamilton's equations}
 
 A key result of Hamiltonian mechanics is Liouville's theorem. In \cite{hestenes-hamilton}, Hestenes showed that Liouville's theorem is given by
 
