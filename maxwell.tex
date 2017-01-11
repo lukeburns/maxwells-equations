@@ -178,7 +178,7 @@ Let $\mathcal{M}$ be an m-dimensional smooth oriented vector manifold with a pie
   \int L(\dot x, d^mx \dot \partial) = \oint L(x, d^{m-1}x),\label{eq:fundamental-theorem}
 \end{equation}
 
-where $L(\dot x, d^mx \dot \partial)$ denotes right and left differentiation all $x$ dependent terms in $L$ by $\partial$. Note that the linear function $L$ is multivector-valued and Stokes' theorem of differential forms is given equivalent to the scalar valued part of this equation:
+where $L(\dot x, d^mx \dot \partial)$ denotes right and left differentiation all $x$ dependent terms in $L$ by $\partial$. Note that the linear function $L$ is multivector-valued and Stokes' theorem of differential forms is equivalent to the scalar valued part
 
 \begin{equation}
   \int \langle L(\dot x, d^mx \dot \partial)\rangle = \oint \langle L(x, d^{m-1}x)\rangle.
@@ -203,35 +203,23 @@ Then $F$ is given by \cite{cagc}
 
 where $g$ is a Green's function of $\partial$ satisfying $\partial g(x,x') = - g(x, x') \partial' = \delta(x - x').$ This result says that \emph{any integrable field has a local antiderivative, and it's given by Equation \ref{eq:integral-formula}}.
 
-\section{Helmholtz decomposition}
+\paragraph{Helmholtz decomposition}
 
-The integral formula tells us that $J$ has an antiderivative $F$ such that
+Notice that the integral formula is simply a generalized Helmholtz decomposition, since
+
 \begin{align}
-    J &= \partial F = \partial \cdot F + \partial \wedge F \\ 
-      &= (-1)^m I^{-1} \left(\int g d^{m}x \partial^2 F - \oint g d^{m-1}x \partial F\right).\label{eq:helmholtz}
+    J &= \partial F = \partial \cdot F + \partial \wedge F, \label{eq:helmholtz}
   \end{align}
 
-In addition, we can say
+is a decomposition of $J$ into divergence free and curl free fields, $\partial \cdot F$ and $\partial \wedge F$ respectively. This is because $\partial \wedge (\partial \wedge M) = \partial \cdot (\partial \cdot M) = 0$ for any field $M$. Additionally, this decomposition comes with constraints given by Equation \ref{eq:constraints}.
 
-\begin{equation}
-  \partial \cdot F = (-1)^m I^{-1} \left(\int g d^{m}x \partial (\partial \cdot F) - \oint g d^{m-1}x \partial \cdot F\right)
-\end{equation}
-
-and
-
-\begin{equation}
-  \partial \wedge F = (-1)^m I^{-1} \left(\int g d^{m}x \partial (\partial \wedge F) - \oint g d^{m-1}x \partial \wedge F\right),
-\end{equation}
-
-which gives a generalized Helmholtz decomposition into divergence free (or coclosed) and curl free (or closed) fields, $\partial \cdot F$ and $\partial \wedge F$ respectively. This is because $\partial \wedge (\partial \wedge M) = \partial \cdot (\partial \cdot M) = 0$ for any field $M$. Additionally, this decomposition comes with constraints given by Equation \ref{eq:constraints}.
-
-The corresponding result for forms is that (locally), for any $n$-form $j_n$, there exists an $n+1$-form $f_{n+1}$ and an $n-1$-form $f_{n-1}$, such that
+The corresponding result for forms is that locally, for any $n$-form $j_n$, there exists an $n+1$-form $f_{n+1}$ and an $n-1$-form $f_{n-1}$, such that
 
 \begin{equation}
   j_n = -\delta f_{n+1} + d f_{n-1},
 \end{equation}
 
-with the constraints $df_{n+1}=\delta f_{n-1} = 0$. Note that this is a stronger result than Hodge decomposition due to the constraints on $f_{n-1}$ and $f_{n+1}$, and it is \emph{not} restricted Riemannian manifolds.
+with the constraints $df_{n+1}=\delta f_{n-1} = 0$. Note that this is a stronger result than Hodge decomposition due to the constraints on $f_{n-1}$ and $f_{n+1}$ and the fact that it is \emph{not} restricted Riemannian manifolds.
 
 \section{Divergence and curl free fields}
 
