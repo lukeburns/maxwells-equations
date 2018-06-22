@@ -1,449 +1,178 @@
-\documentclass[twocolumn]{article}
-\usepackage[margin=.7in]{geometry}
+\documentclass{article}
+\usepackage[margin=1in]{geometry}
 \usepackage{amsmath}
-
-\usepackage{hyperref}
-\renewcommand{\abstractname}{\vspace{-\baselineskip}}
 \usepackage{sectsty}
-\sectionfont{\fontsize{12}{15}\selectfont}
+\usepackage{amsfonts}
+\usepackage{multicol}
+\usepackage{hyperref}
 
-\title{Does the continuity equation imply Maxwell's equations?}
+\sectionfont{\fontsize{12}{15}\selectfont}
+\renewcommand{\abstractname}{\vspace{-\baselineskip}}
+
+\title{When does the continuity equation imply Maxwell's equations?}
 \author{Luke Burns}
 \date{\small \today\vspace{-5ex}}
 
 \begin{document}
-\twocolumn[
-\begin{@twocolumnfalse}
-  \maketitle
-  \abstract{The antiderivative of a divergence free multivector field is shown to be curl free up to a harmonic function. This result implies that \emph{any} vector valued current density $J$ that is divergence free possesses a bivector valued antiderivative $F$ that satisfies $\partial F = J$ under suitable boundary conditions. In four dimensions, this is Maxwell's equation. This reinforces an existing result indicating that charge conservation can serve as a foundation for an axiomatic formulation of electrodynamics.}
 
-  \paragraph{Work In Progress} This paper is a work in progress and is being openly developed on Github at \url{https://github.com/lukeburns/maxwells-equations}. Contributions are warmly welcomed, whether by means of opening an issue or pull request. \\
-\end{@twocolumnfalse} ]
+\maketitle
+
+\abstract{A fundamental result of electrodynamics is that Maxwell's equations imply that charge is locally conserved. Here we show that local charge conservation implies the existence of fields satisfying Maxwell's equations.}
 
 \section{Introduction}
-The question \emph{Can Maxwell’s equations be obtained from
-the continuity equation?} was first asked by Jos\'e A. Heras in \cite{heras}, who concluded \emph{yes} and provided a construction by means of a generalization of Helmholtz decomposition. The purpose of the present paper is to affirm and generalize the theorem of Heras to manifolds of any dimension by means of a generalized Helmholtz decomposition of geometric calculus.
 
-After establishing a mapping between $n$-vector fields and differential forms of degree $n$, which allows for the result of this paper to be translated into differential forms, I present the Fundamental Theorem of Geometric Calculus, and two consequences: a generalization of Cauchy's Integral Formula and Helmholtz decomposition for multivector fields.
+In Fredriech Hehl's premetric approach to electrodynamics, the inhomogenous Maxwell equations $\nabla \cdot F = J$ are obtained from the continuity equation $\nabla \cdot J = 0$ using Poincar\'e's lemma, and the homogenous equations $\nabla \wedge F = 0$ are determined by a separate postulate.\cite{hehl} \footnote{More precisely, Hehl postulates the existence of a field strength $F$ and excitation $H$ related by some constitutive relations satisfying $\nabla \wedge F = 0$ and $\nabla \cdot H = J$. While the use of excitations and constitutive relations are surely at the crux of the premetric approach, it can be argued, as Griffiths does, that the division into field strength and excitation ``reflect[s] a convenient division of charge and current into free and nonfree parts,'' so in this way the ``microscopic'' equations are not any less general if we've already established a metric. See p330 of \cite{griffiths}.} 
 
-Using these results, I show that all divergence free (coclosed) fields fail to be coexact (i.e. the curl of some other field) by at most a monogenic term. Monogenic fields are characterized by the property that they are fully determined by boundary conditions, analogous to complex analytic functions. I present some conditions under which these fields are coexact. A field whose antiderivative is curl free is dubbed \emph{faithful}, by which it follows that the derivative of a curl free field is faithful, and the antiderivative of a faithful field is curl free. This establishes an equivalence between the statements ``an electromagnetic field $F$ is a curl free bivector field'' and ``an electromagnetic current $J$ is a faithful vector field,'' both of which fully determine the structure of Maxwell's equations. 
+In this paper, we present a strengthened version of the Poincar\'e Lemma that has as an immediate consequence that local charge conservation is enough to determine the existence of a field satisfying both.
 
-I then show that a conserved vector field $J$ is faithful on a simple manifold of arbitrary dimension under suitable boundary conditions. This reinforces the result of Heras that the continuity equation implies Maxwell's equations, under satisfactory boundary conditions.
+This fact allows us to understand Maxwell's equation precisely as an expression of local charge conservation, deepens our understanding of analogies to electrodynamics found across theories, and can help guide investigations into extensions of electrodynamics, as well as the construction of other theories with conserved quantities.
 
-\section{Fields and forms} If $F_n \equiv \langle F \rangle_n$ is the grade $n$ part of the multivector field (hereafter, just field) $F = \sum F_n$ in an arbitrary geometric algebra $\mathcal{G}$, then its corresponding \emph{differential form $f_n$ of degree $n$} is a scalar field given by \cite{cagc}
+We begin with a statement of the key result of geometric calculus used (the integral formula), follow with the Poincar\'e lemma, and then present its stronger form. We end with its application answering the question posed in the title and a brief discussion.
 
-\begin{equation}
-  f_n \equiv d^nx^\dagger \cdot F_n,\label{eq:form}
-\end{equation}
+\section{The Integral Formula}
 
-which is the projection of the $n$-vector field $F_n$ onto the directed measure $d^nx^\dagger = dx_n \wedge \dots \wedge dx_1$, where $dx_i$ are vector valued differentials. 
-
-The hodge star operation $*$ acts on fields as
-
-\begin{equation}
-  *F \equiv F^\dagger I,\label{eq:hodge}
-\end{equation}
-
-where $I$ is the pseudoscalar of some oriented vector manifold.\footnote{See Chapter 4 of \cite{cagc}, or Section 6.5 of \cite{gap}.}
-
-The exterior derivative $d$ behaves identically to the curl
-
-\begin{equation}
-  d f_n \equiv d^{n+1}x^\dagger \cdot (\partial \wedge F_n),\label{eq:curl}
-\end{equation}
-
-and the ``adjoint operator'' $\delta$ behaves identically to (minus) the divergence
-
-\begin{equation}
-  \delta f_n \equiv d^{n-1}x^\dagger \cdot (-\partial \cdot F_n).\label{eq:divergence}
-\end{equation} 
-
-The word \emph{form} will be reserved for scalar fields corresponding to some $n$-vector field via Equation \ref{eq:form}. Lowercase letters will be used for forms and uppercase letters for fields. Subscripts denote grade of a multivector (degree of a form).
-
-\section{Derivatives}
-
-A field $F$ is called \emph{curl free} (or closed) when 
-
-\begin{equation}
-  \partial \wedge F = 0
-\end{equation}
-
-and \emph{divergence free} (or coclosed) when 
-
-\begin{equation}
-  \partial \cdot F = 0,
-\end{equation}
-
-where $\partial = \partial_x$ is the derivative with respect to the vector $x$. This operator is unique to geometric calculus, and the entire subject is a study of the properties of this operator. It's also often called the Dirac operator and can be written $\partial = e^k \partial_k$ where $\partial_k = \frac{\partial}{\partial x^k} = e_k \cdot \partial$ with respect to coordinates $x^k = e_k \cdot x$.\footnote{See p. 252 of \cite{cagc} for a coordinate free, integral definition of $\partial$.}
-
-A field for which
-
-\begin{equation}
-  \partial F = \partial \cdot F + \partial \wedge F = 0
-\end{equation}
-
-is called \emph{monogenic}. It possesses the property of complex analytic functions that, in any region, it is fully determined by its values on the boundary of that region. Hence, the form $\omega$ is closed if $d \omega = 0$, coclosed if $\delta \omega = 0$, and monogenic if $d \omega = \delta \omega = 0$. Note that for general fields, $\partial F = 0$ does not necessarily imply that $\nabla \cdot F = \nabla \wedge F = 0$.
-
-A field $H$ that satisfies
-
-\begin{equation}
-  \partial^2 H = 0
-\end{equation}
-
-might be called \emph{harmonic}, although the term is inappropriate in mixed signature spaces. For instance, in Minkowski space, $\partial^2 H = (\partial_t^2 - \vec \nabla^2) H = 0$ is the wave equation and its properties differ dramatically from the usual harmonic functions in Euclidean spaces. Nonetheless, I will abuse the term here for lack of a better one. A form $\gamma$ is then harmonic if $d \delta \gamma + \delta d \gamma = 0$.
-
-\section{Potentials}
-
-If a field $J$ is written as
-
-\begin{equation}
-  J = \partial \cdot G + \partial \wedge H,
-\end{equation}
-
-then $G$ and $H$ are called \emph{potentials} for $J$. Similarly, if a form $\omega$ is given by
-
-\begin{equation}
-  \omega = d \alpha + \delta \beta
-\end{equation}
-
-then $\alpha$ and $\beta$ will be called potentials for $\omega$.
-
-A field $J$ is called \emph{exact} when
-
-\begin{equation}
-  J = \partial \wedge F
-\end{equation}
-
-and \emph{coexact} when
-
-\begin{equation}
-  J = \partial \cdot F,
-\end{equation}
-
-whereby a form $\omega$ is exact if $\omega = d \alpha$ and coexact if $\omega = \delta \beta$. Two curl free fields are called \emph{cohomologous} if their difference is an exact field. Similarly, two divergence free fields are called \emph{homologous} if their difference is a coexact field.
-
-\section{Antiderivatives}
-
-A field $F$ is called an \emph{antiderivative} of $J$ if
-
-\begin{equation}
-  J = \partial F = \partial \cdot F + \partial \wedge F,\label{eq:antiderivative}
-\end{equation}
-
-which is unique up to a monogenic term. That is, $F + C$ such that $\partial C = 0$ is also an antiderivative. Furthermore, given an antiderivative, one has possession of constraints on $F$. For every $J_k = 0$ (again, where $J_k = \langle J \rangle_k$ is the $k$-grade part of J),
-
-\begin{equation}
-  J_k = \partial \cdot F_{k+1} + \partial \wedge F_{k-1} = 0.\label{eq:constraints}
-\end{equation}
-
-As an example, if $J = J_n$ is an $n$-vector field, then 
-
-\begin{equation}
-  J_n = \partial F = \partial \cdot F_{n+1} + \partial \wedge F_{n-1},\label{ex:antiderivative}
-\end{equation}
-
-and the constraints due to $J_{n-2} = J_{n+2} = 0$ and $F_{n-3} = F_{n+3} = 0$ are
-
-\begin{equation}
-  J_{n-2} = \partial \cdot F_{n-1} = 0 \text{ and } J_{n+2} = \partial \wedge F_{n+1} = 0.\label{ex:constraints}
-\end{equation}
-
-Of course, $F$ \emph{could} contain terms of higher and lower grades as long as they vanish under the derivative, but they make no contribution to $J_n$. Under the restriction that it only has grades which contribute to $J_n$, $F$ is of the form 
-
-\begin{equation}
-  F = F_{n-1} + F_{n+1}.
-\end{equation}
-
-If $j_n$ and $f_n$ are the forms given by $J_n$ and $F_n$, then Equations \ref{eq:curl} and \ref{eq:divergence} imply that, in terms of differential forms, Equation \ref{ex:antiderivative} is of the form
-
-\begin{equation}
-  j_n = -\delta f_{n+1} + d f_{n-1},
-\end{equation}
-
-and Equation \ref{ex:constraints} is equivalent to
-
-\begin{equation}
-  \delta f_{n-1} = d f_{n+1} = 0.
-\end{equation}
-
-Given potentials $f_{n-1}$ and $f_{n+1}$ under these constraints, one is in possession of an antiderivative of $j_n$.
-
-\section{The Fundamental Theorem}
-
-Let $\mathcal{M}$ be an m-dimensional smooth oriented vector manifold with a piecewise smooth boundary $\partial \mathcal{M}$ and $L$ be a linear function, differentiable on $\mathcal{M}$ and $\partial \mathcal{M}$. Then, \cite{cagc} \cite{sobczyk} \cite{gap}
-
-\begin{equation}
-  \int L(\dot x, d^mx \dot \partial) = \oint L(x, d^{m-1}x),\label{eq:fundamental-theorem}
-\end{equation}
-
-where $L(\dot x, d^mx \dot \partial)$ denotes right and left differentiation all $x$ dependent terms in $L$ by $\partial$. Note that the linear function $L$ is multivector-valued and Stokes' theorem of differential forms is equivalent to the scalar valued part
-
-\begin{equation}
-  \int \langle L(\dot x, d^mx \dot \partial)\rangle = \oint \langle L(x, d^{m-1}x)\rangle.
-\end{equation}
-
-\section{Integral Formula}
-
-Let $J$ be a field on a simple (not self-intersecting) manifold $\mathcal{M}$ subject to the same criteria in the fundamental theorem. Suppose $J$ satisfies the equation
-
-\begin{equation}
-  \partial F = J.
-\end{equation}
-
-Then $F$ is given by \cite{cagc}
+Let $J$ be a multivector field integrable on a simple, m-dimensional manifold $\mathcal{M}$. Then it possesses antiderivatives $H$ (i.e. $J = \nabla H$) determined by $J$, up to boundary conditions, given by
 
 \begin{align}
   \begin{split}
-    F(x) = & +(-1)^{m} I^{-1}(x) \int g(x, x') d^{m}x' J(x') \\
-    &- (-1)^{m} I^{-1}(x) \oint g(x, x') d^{m-1}x' F(x'),\label{eq:integral-formula}
+    (-1)^m i(x) H(x) = - \int g(x, x') d^m x' J(x') + \oint g(x, x') d^{m-1} x' H(x'),\label{eq:integral-formula}
   \end{split}
 \end{align}
 
-where $g$ is a Green's function of $\partial$ satisfying $\partial g(x,x') = - g(x, x') \partial' = \delta(x - x').$ This result says that \emph{any integrable field has a local antiderivative, and it's given by Equation \ref{eq:integral-formula}}.
+where $i$ is the unit pseudoscalar, $g$ is a Green's function defined on $\mathcal{M}$ (granted that one exists), $\nabla$ is the vector derivative, and $d^k x$ is a $k$-graded differential. Note that antiderivatives differ at most by a monogenic function $C$, i.e. one that satisfies $\nabla C = 0$. See p260 of \cite{cagc} for a complete development. 
 
-\paragraph{Helmholtz decomposition}
+There are subtleties around the surfaces used in a mixed signature space. In particular, the boundary cannot be a null surface. See p182 of \cite{gap} for a detailed discussion.
 
-Notice that the integral formula is simply a generalized Helmholtz decomposition, since
-
-\begin{align}
-    J &= \partial F = \partial \cdot F + \partial \wedge F, \label{eq:helmholtz}
-  \end{align}
-
-is a decomposition of $J$ into divergence free and curl free fields, $\partial \cdot F$ and $\partial \wedge F$ respectively. This is because $\partial \wedge (\partial \wedge M) = \partial \cdot (\partial \cdot M) = 0$ for any field $M$. Additionally, this decomposition comes with constraints given by Equation \ref{eq:constraints}.
-
-The corresponding result for forms is that locally, for any $n$-form $j_n$, there exists an $n+1$-form $f_{n+1}$ and an $n-1$-form $f_{n-1}$, such that
-
-\begin{equation}
-  j_n = -\delta f_{n+1} + d f_{n-1},
-\end{equation}
-
-with the constraints $df_{n+1}=\delta f_{n-1} = 0$. Note that this is a stronger result than Helmholtz decomposition due to the constraints on $f_{n-1}$ and $f_{n+1}$ and stronger than Hodge decomposition due the fact that it is \emph{not} restricted to Riemannian manifolds.
-
-\section{Divergence and curl free fields}
-
-The above result implies that antiderivatives of divergence free fields fail to be curl free, and antiderivatives of curl free fields fail to be divergence free, by at most a harmonic function $H$ satisfying $\partial^2 H = 0$.
-
-Suppose $J$ is divergence free (the dual result for curl free fields follows analogously). By the integral formula, it has a local antiderivative $F$, such that $J = \partial F$. Hence,
-
-\begin{equation}
-  \partial \cdot J = \partial \cdot (\partial F) = \partial \cdot (\partial \cdot F + \partial \wedge F) = \partial \cdot (\partial \wedge F) = \partial (\partial \wedge F) = 0,
-\end{equation}
-
-which means that $C \equiv \partial \wedge F$ is monogenic and $J$ is locally homologous with $C$
-
-\begin{equation}
-  J - C = \partial F - C = \partial \cdot F,\label{eq:homologous}
-\end{equation}
-
-because their difference is coexact.
-
-Employing the integral theorem, $C$ has an antiderivative $H$ such that 
-
-\begin{equation}
-  C = \partial H.
-\end{equation}
-
-With $G \equiv F - H$, this implies that $F$ can then be written
-
-\begin{equation}
-  F = G + H\label{eq:harmonic-split}
-\end{equation}
-
-where $\partial G = \partial \cdot F$ and $\partial^2 H = 0$. Note that if $H=0$, then $\partial F = \partial \cdot F$. Hence, $F$ fails to be curl free by at most a harmonic function $H$.
-
-As an example, if $C$ is a monogenic r-vector field, then $C$ can be written $C = \partial \cdot (x \wedge C)/r = \partial \wedge (x \cdot C)/(n-r)$, and $C$ is both exact and coexact, in which case\footnote{Under what conditions are general monogenic multivector fields exact / coexact?}
-
-\begin{equation}
-  J = \partial F = \partial \cdot (F + x \wedge C/r)\label{eq:unfaithful}
-\end{equation}
-
-is locally coexact --- although, $F$ is not curl free. 
-
-If $C = 0$ on the boundary, then $C = 0$ everywhere, and its antiderivative is curl free
-
-\begin{equation}
-  J = \partial F = \partial \cdot F. \label{eq:faithful}
-\end{equation}
-
-Let us call a field $J$ \emph{faithful} if its antiderivative is curl free. Faithful fields are coexact, and all divergence free fields differ from faithful fields by at most a monogenic field, which depends solely on the manifold and boundary conditions. Note, however, that coexact fields are not necessarily faithful. 
-
-A form is faithful if
-
-\begin{equation}
-  j = - \delta f \text { and } df = 0.
-\end{equation}
-
-A field $J$ with a divergence free antiderivative $F$ is \emph{cofaithful} and can be written
-
-\begin{equation}
-  J = \partial F = \partial \wedge F,
-\end{equation}
-
-and hence, a form is cofaithful if
-
-\begin{equation}
-  j = df \text{ and } \delta f = 0.
-\end{equation}
-
-\section{Conserved currents}
-
-Consider the specific case of a divergence free vector field $J$ (i.e. a conserved current). By Equation \ref{ex:constraints} and Equation \ref{eq:harmonic-split}, any antiderivative $F$ of $J$ can be decomposed into 
-
-\begin{equation}
-  F = F_0 + F_2,
-\end{equation}
-
-such that
-
-\begin{equation}
-  \partial F = \partial \cdot F_2 + \partial F_0 = J, \label{eq:generalized-maxwell}
-\end{equation}
-
-where $\partial \wedge F_2 = 0$ and $\partial^2 F_0 = 0$. \emph{Any} divergence free vector field $J$ can be written in this form, in regions where $J$ is integrable.
-
-This is an important result, particularly in flat spacetime, so I'll write it out in the familiar vector algebra of three dimensions by splitting $\partial = \gamma^0( \frac{1}{c}\partial_t + \vec \nabla)$, $F_2 = \vec{E} + i \vec{B}$, and $J = (c \rho + \vec J) \gamma_0$ into frame dependent timelike and spacelike terms. In four dimensions, with $\chi \equiv F_0$, Equation \ref{eq:generalized-maxwell} can be decomposed into
-
-\begin{equation}
-  \begin{aligned}
-    \vec \nabla \cdot \vec E + \frac{1}{c}\partial_t \chi &= c \rho &\hspace{1cm} \vec \nabla \cdot \vec B &= 0 \\
-    \vec \nabla \times \vec B - \vec \nabla \chi &= \frac{1}{c} \partial_t E + \vec J &\hspace{1cm} \vec \nabla \times \vec E &= -\frac{1}{c} \partial_t B.\label{eq:generalized-maxwell-vector}
-  \end{aligned}
-\end{equation}
-
-That is, Equation \ref{eq:generalized-maxwell-vector} is equivalent to the continuity equation in flat spacetime.
-
-% In the language of differential forms, this can be written
-
-% \begin{equation}
-%   d f_2 = 0 \text{ and } \delta h = j,
-% \end{equation}
-
-% where $h \equiv \widetilde{d^{2}x} \cdot (F_2 + x \wedge \partial F_0)$. Every conserved current satisfies these equations in regions of the manifold where $J$ is integrable.
-
-On suitable manifolds and under suitable boundary conditions, $J$ is locally faithful. Equation \ref{eq:helmholtz} tells us that $J$ can be written
+Note that this result generalizes Helmholtz decomposition of vector calculus to arbitrary dimension, as it implies that any integrable multivector field $A = \nabla B$ with antiderivative $B$ can be decomposed into the sum of a divergence-free and curl-free part
 
 \begin{align}
-  J  &= (-1)^m I^{-1} \left(\int g d^{m}x \partial J - \oint g d^{m-1}x J \right).\label{eq:conditions}
+  A = A^\perp + A^\parallel, \label{eq:helmholtz}
 \end{align}
 
-For instance, if the boundary term vanishes, then $J$ is given by
+with $A^\perp = \nabla \cdot B$ and $A^\parallel = \nabla \wedge B.$\footnote{This is due to the identities $\nabla \cdot (\nabla \cdot M) = 0$ and $\nabla \wedge (\nabla \wedge M) = 0$ for any multivector field $M$.} We'll use this notation $A^\perp$ and $A^\parallel$ to indicate divergence-free and curl-free parts for any multivector field $A$, respectively, extending a notation used by Belinfante. \cite{belinfante}
 
-\begin{align}
-  J &= (-1)^m I^{-1} \int g d^{m}x \partial J,\label{eq:satisfied}
-\end{align}
+\section{A strengthening of Poincar\'e's lemma}
 
-which is only dependent on $\partial J = \partial^2 F = \partial^2 (F_0 + F_2) = \partial^2 F_2$, since $F_0$ is harmonic. In other words, when $J$ is fully determined by its derivative $\partial J$, $J$ is independent of $F_0$ and $J$ can generally be written as 
+In the language of differential forms, the Poincar\'e lemma states that closed differential forms are locally exact. In geometric calculus, every $k$-form corresponds to a $k$-vector field, and the Poincar\'e lemma can be restated as: every curl free k-vector field can be written as the curl of a $(k-1)$-vector field locally. See \cite{hestenes} for the embedding of differential forms in geometric calculus used here. 
 
-\begin{equation}
-  J = \partial F = \partial \cdot F,
-\end{equation}
-
-and $J$ is faithful. Equation \ref{eq:generalized-maxwell-vector} is then equivalent to Maxwell's equations
+More generally, for any multivector $J$ on $\mathcal{M}$, 
 
 \begin{equation}
-  \begin{aligned}
-    \vec \nabla \cdot \vec E &= c \rho &\hspace{1cm} \vec \nabla \cdot \vec B &= 0 \\
-    \vec \nabla \times \vec B &= \frac{1}{c}\partial_t E + \vec J &\hspace{1cm} \vec \nabla \times \vec E &= - \frac{1}{c}\partial_t B.\label{eq:maxwell-vector}
-  \end{aligned}
-\end{equation}
-
-This affirms the result of Heras that Maxwell's equations can be obtained from the continuity equation.\cite{heras} 
-
-Maxwell's equations follow from directly from the statement that \emph{``an electromagnetic field $F$ is a curl free bivector field and its derivative is its current $J$.''} To say that it is curl free means that
-
-\begin{equation}
-  \partial \wedge F = 0,
-\end{equation}
-
-and its derivative $J$ is
-
-\begin{equation}
-  J = \partial F = \partial \cdot F,
+    \nabla \wedge J = 0 \implies \exists G : J = \nabla \wedge G
 \end{equation} 
 
-which are Maxwell's equations with no magnetic monopoles or currents. Of course, Maxwell's equations imply the continuity equation
+for some multivector field $G$, locally.\footnote{The Poincar\'e lemma extends to general multivectors, because it can simply be applied component-wise: $\nabla \wedge J = 0$ implies $\nabla \wedge \langle J \rangle_k = 0$ for each k-grade part of $J$. This implies $\langle J \rangle_k = \nabla \wedge G_{k-1}$ so that $J = \nabla \wedge G$, where $\langle G \rangle_k = G_k$.} The dual of this result is
 
 \begin{equation}
-  \partial \cdot J = \partial \cdot (\partial \cdot F) = 0, \label{eq:continuity}
-\end{equation} 
+    \nabla \cdot J = 0 \implies \exists G : J = \nabla \cdot G,
+\end{equation}
 
-which means charge is conserved. 
+for some multivector $G$. Again, that this holds only locally is crucial as the failure of it to do so provides a measure of the manifold's homology via the de Rham cohomology.
 
-The result of this paper allows for an alternative characterization of Maxwell's equations. $F$ is an antiderivative of $J$, so to say that $F$ is curl free is the same as saying $J$ is faithful. Hence, the above characterization is equivalent to the dual statement \emph{``an electromagnetic current $J$ is a faithful vector field and its antiderivative is an electromagnetic field $F$.''}
+A stronger version of Poincar\'e's lemma can be obtained by pairing it with Helmholtz decomposition, Equation~\ref{eq:helmholtz}.
 
-% \paragraph{Note on Hamilton's equations}
+Namely, if $J$ is curl free, then there exists a multivector $G$ such that
 
-% A key result of Hamiltonian mechanics is Liouville's theorem. In \cite{hestenes-hamilton}, Hestenes showed that Liouville's theorem is given by
+\begin{equation}
+    J = \nabla \wedge G = \nabla \wedge (G^\perp + G^\parallel) = \nabla \wedge G^\perp = \nabla G^\perp.
+\end{equation}
 
-% \begin{equation}
-%   \partial \cdot \dot x = 0,\label{eq:hamilton-continuity}
-% \end{equation}
+That is, if $J$ is curl free, then locally it possesses a divergence free antiderivative $G^\perp.$\footnote{In the language of differential forms, this ``strong'' Poincare lemma can be expressed as ${d \alpha = 0 \implies \alpha = d \beta \text{, with } d * \beta = 0}$, under the usual condition.}
 
-% where the vector $x = p + q \cdot J$ is a point in phase space represented as a $2n$-dimensional manifold $\mathcal{M}^{2n}$ equipped with a symplectic bivector $J$ (this differs from the convention used throughout this paper).
+The dual also holds. If $J$ is divergence free, then there exists a $G$ such that
 
-% Equation \ref{eq:unfaithful} provides an expression for a bivector field $\Omega$ that satisfies
+\begin{equation}
+    J = \nabla \cdot G = \nabla \cdot (G^\perp + G^\parallel) = \nabla \cdot G^\parallel = \nabla G^\parallel.
+\end{equation}
 
-% \begin{equation}
-%   \dot x = \partial \cdot \Omega. \label{eq:hamiltons-equations}
-% \end{equation}
+That is, if $J$ is divergence free, then locally it possesses a curl free antiderivative $G^\parallel.$ 
 
-% Hestenes showed in \cite{hestenes-hamilton} that Hamilton's equations can be written in this form with $\Omega = H J$, where the hamiltonian $H$ acts as an integrating factor for $J$.\footnote{Hestenes actually wrote this as $\dot x = \nabla \cdot \Omega = \underline P (\partial \cdot \Omega)$, which is the projection of Equation \ref{eq:hamiltons-equations} into the tangent algebra of $\mathcal{M}^{2n}$.}
+Curiously, to my knowledge, this result hasn't much found footing in the literature, despite the fact that it provides an immediate answer to the title of this paper. Although, one instance of this theorem in Euclidean space can be found in \cite{brackx} by Brackx, Delanghe, and Sommen, who also noted its seeming absence from the literature.
 
-% \section{Symmetry}
+\section{Maxwell's equation}
 
-% Noether's theorem associates to every symmetry a current $J$ satisfying $\partial \cdot J = 0$. Equation \ref{eq:integral-formula} provides a direct expression for the antiderivative $F$ of $J$ such that $\partial F = J$, which is a bivector satisfying Maxwell's equations (under suitable boundary conditions). \emph{What are the implications of this?}
+Turning to the question ``When does the continuity equation imply Maxwell's equation?'', simply notice that the continuity equation $\nabla \cdot J = 0$ expresses the fact that $J$ (here a vector field) is divergence free, which implies that there exists some multivector field $F$ satisfying
 
-% \pagebreak
-  \begin{thebibliography}{9} 
+\begin{equation}
+    J = \nabla \cdot F = \nabla F.
+\end{equation}
 
-    \bibitem{heras}
-      J. Heras.
-      \emph{Can Maxwell’s equations be obtained from the continuity equation?}.
-      Am. J. Phys. Vol. 75, No. 7. (2007).
-      \url{https://arxiv.org/pdf/0812.4785.pdf}
+Since $\nabla \cdot F$ is a vector, $F$ must be a curl free bivector. This is precisely Maxwell's equation.
 
-    % \bibitem{heras-axiomatic}
-    %   J. Heras.
-    %   \emph{An axiomatic approach to Maxwell’s equations}.
-    %   Eur. J. Phys. Vol. 37, No. 5. (2016).
-    %   \url{https://arxiv.org/pdf/1608.00659.pdf}
+\section{Discussion}
 
-    \bibitem{cagc}
-      D. Hestenes.
-      \emph{Clifford algebra to geometric calculus}.
-      D. Reidel Publishing Company (1984).
+Note that the usual Poincar\'e lemma $\nabla \cdot J = 0 \implies \exists F : J = \nabla \cdot F$ doesn't tell us that $J$ must be the divergence of a bivector, just that there exists such a bivector. In the same way, the ``strong'' Poincar\'e lemma presented here doesn't tell us that $F$ must satisfy Maxwell's equations, just that there exists such an $F$. In this view, the result is not particularly surprising.
 
-    \bibitem{sobczyk}
-      Sobczyk, G. \& S\'anchez.
-      \emph{Fundamental Theorem of Calculus}.
-      O.L. Adv. Appl. Clifford Algebras Vol. 21, No. 221 (2011).
-      \url{https://arxiv.org/pdf/0809.4526.pdf}
+Consider the more common situation of applying Poincar\'e's lemma to the electromagnetic field $F$. We use the fact that $\nabla \wedge F = 0$ to determine the existence of a potential $A$ satisfying $F = \nabla \wedge A$. Here, we regularly assume that we can choose the Lorenz gauge $\nabla \cdot A = 0$. The strengthened lemma simply tells us that there is no obstruction to making this choice.
 
-    \bibitem{gap} 
+In a certain sense, $\nabla \wedge F = 0$ is also a gauge choice, insofar as the current density $J$ is concerned. That is, adding a divergence free bivector to $F$ does not change the physical content of $J$, so in this sense it is like a gauge transformation with respect to $J$. However, it \emph{does} change the physical content of $F$, unlike gauge transformations of $A$, so in this sense it is not a gauge transformation, at least with respect to $F$.
+
+On the other hand, this lemma means that Maxwell's equation is simply and precisely an expression of local charge conservation. It still carries the \emph{freedom} to admit magnetic sources, but Maxwell's equation with both electric and magnetic sources can always be decoupled into a pair of Maxwell equations: one for electric sources and one for magnetic sources. Of course, this says nothing of the dynamics of electromagnetism, since it tells us nothing of the force exerted by the field on the current.
+
+But, it does tells us that the force law is what distinguishes different electromagnetic theories in trivial topologies, and helps us to know that topological theories of electrodynamics are fundamentally distinct, only resembling the classical theory locally. A general theory of conserved currents on manifolds rooted in de Rham theory is certainly worth exploring.
+
+As such, this result is helpful in guiding investigations of extensions to electrodynamics. For instance, some equations may appear to be generalizations of Maxwell's equations, but are not. Consider $\nabla F + \nabla \chi = J$, where $\chi$ is a scalar field satisfying $\nabla^2 \chi = 0$, as seen in \cite{dvoe} with $J=0$. The strong lemma tells us that solutions to this equation have corresponding solutions to Maxwell's equations.
+
+It also simplifies axiomatic treatments to electrodynamics, affirming the argument of Jos\'e Heras that charge conservation can be used as the fundamental assumption underlying Maxwell's equations.\cite{heras} 
+
+Moreover, this result applies to any conserved current, so may offer insight into the construction of theories beyond electrodynamics. Corresponding to any locally conserved quantity (and thus, by Noether's theorem, to any symmetry) is a field satisfying Maxwell's equation. Perhaps with clever choice of a force law, Maxwell's equations can find use in the description other conserved quantities as well.
+
+For instance, Itin, Hehl, and Obukhov develop a premetric theory of general relativity much like premetric electrodynamics, exploiting the analogies between the mathematical structures in electromagnetism and the teleparallel theory of gravity.\cite{itin} In viewing Maxwell's equations as the expression of a conserved quantity, it is less surprising that these analogies between electromagnetism and general relativity exist, and perhaps also less mysterious that Yang-Mills theories have structure so closely resembling that of electrodynamics. These analogies are not coincidental. They are simply the marks of conserved quantities.
+
+Investigation of where these analogies between theories thrive and fail precisely will surely prove to be fruitful, as we scramble for grounding and hints at truthful theories beyond our current knowing of nature. As long as there are conserved quantities in the universe, Maxwell's equations will always be hiding in our theories --- at least locally.
+
+\begin{thebibliography}{9}
+
+  \bibitem{hehl}
+    Fredriech W. Hehl, Yuri N. Obukhov.
+    \emph{Foundations of Classical Electrodynamics.}
+    Birkhäuser Basel (2003).
+
+  \bibitem{cagc}
+    D. Hestenes.
+    \emph{Clifford algebra to geometric calculus}.
+    D. Reidel Publishing Company (1984).
+    
+  \bibitem{gap}
       C. Doran and A. Lasenby.
       \emph{Geometric Algebra for Physicists}. Cambridge University Press (2003).
 
-    % \bibitem{extension}
-    %   L. Burns.
-    %   \emph{An extension of the Dirac equation}.
-    %   \url{https://github.com/lukeburns/dirac}.
+  \bibitem{griffiths}
+      D. J. Griffiths.
+      \emph{Introduction to Electrodynamics, 3rd edition.} 
+      Prentice Hall (1999).       
 
-    % \bibitem{gauge-duality}
-    %   L. Burns.
-    %   \emph{Gauging duality symmetry}.
-    %   \url{https://github.com/lukeburns/gauge-duality}.
+  \bibitem{belinfante}
+    F. J. Belinfante
+    \emph{On the longitudinal and the transversal delta function, with some applications}.
+    Physica, Volume 12, Issue 1 (1946).
 
-    % \bibitem{electroweak}
-    %   D. Hestenes.
-    %   \emph{Space-Time Structure of Weak and Electromagnetic Interactions}.
-    %   Found. Physics Vol. 12 (1982).
+  \bibitem{hestenes}
+    D. Hestenes.
+    \emph{Differential Forms in Geometric Calculus}.
+    Clifford Algebras and their Applications in Mathematical Physics, 
+    Kluwer: Dordercht/Boston(1993), 269–285.    
 
-    \bibitem{hestenes-hamilton}
-      D. Hestenes.
-      \emph{Hamiltonian Mechanics with Geometric Calculus}.
-       Z. Oziewicz et al (eds.), Spinors, Twistors, Clifford Algebras and Quantum Deformations, Kluwer: Dordercht/Boston (1993), 203–214.
+  \bibitem{brackx}
+    F. Brackx, R. Delanghe, and F. Sommen.
+    \emph{Differential Forms and/or Multi-vector Functions.}
+    CUBO 7(2):139-169 (2005).    
+    
+  \bibitem{dvoe}
+    Valeri V Dvoeglazov. 
+    \emph{Generalized Maxwell equations from the Einstein postulate}.
+    J. Phys. A: Math. Gen. 33 5011 (2000).
+    
+  \bibitem{heras}
+    Jos\'e A. Heras.
+    \emph{Can Maxwell’s equations be obtained from the continuity equation?}
+    American Journal of Physics 75, 652 (2007).
+    
+  \bibitem{itin}
+    Yakov Itin, Fredriech W. Hehl, Yuri N. Obukhov.
+    \emph{Premetric equivalent of general relativity}.
+    Phys. Rev. D 95, 084020 (2017).
 
-
-  \end{thebibliography}
+\end{thebibliography}
 
 \end{document}
