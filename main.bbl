@@ -1,0 +1,188 @@
+%merlin.mbs apsrev4-1.bst 2010-07-25 4.21a (PWD, AO, DPC) hacked
+%Control: key (0)
+%Control: author (8) initials jnrlst
+%Control: editor formatted (1) identically to author
+%Control: production of article title (-1) disabled
+%Control: page (0) single
+%Control: year (1) truncated
+%Control: production of eprint (0) enabled
+\begin{thebibliography}{17}%
+\makeatletter
+\providecommand \@ifxundefined [1]{%
+ \@ifx{#1\undefined}
+}%
+\providecommand \@ifnum [1]{%
+ \ifnum #1\expandafter \@firstoftwo
+ \else \expandafter \@secondoftwo
+ \fi
+}%
+\providecommand \@ifx [1]{%
+ \ifx #1\expandafter \@firstoftwo
+ \else \expandafter \@secondoftwo
+ \fi
+}%
+\providecommand \natexlab [1]{#1}%
+\providecommand \enquote  [1]{``#1''}%
+\providecommand \bibnamefont  [1]{#1}%
+\providecommand \bibfnamefont [1]{#1}%
+\providecommand \citenamefont [1]{#1}%
+\providecommand \href@noop [0]{\@secondoftwo}%
+\providecommand \href [0]{\begingroup \@sanitize@url \@href}%
+\providecommand \@href[1]{\@@startlink{#1}\@@href}%
+\providecommand \@@href[1]{\endgroup#1\@@endlink}%
+\providecommand \@sanitize@url [0]{\catcode `\\12\catcode `\$12\catcode
+  `\&12\catcode `\#12\catcode `\^12\catcode `\_12\catcode `\%12\relax}%
+\providecommand \@@startlink[1]{}%
+\providecommand \@@endlink[0]{}%
+\providecommand \url  [0]{\begingroup\@sanitize@url \@url }%
+\providecommand \@url [1]{\endgroup\@href {#1}{\urlprefix }}%
+\providecommand \urlprefix  [0]{URL }%
+\providecommand \Eprint [0]{\href }%
+\providecommand \doibase [0]{http://dx.doi.org/}%
+\providecommand \selectlanguage [0]{\@gobble}%
+\providecommand \bibinfo  [0]{\@secondoftwo}%
+\providecommand \bibfield  [0]{\@secondoftwo}%
+\providecommand \translation [1]{[#1]}%
+\providecommand \BibitemOpen [0]{}%
+\providecommand \bibitemStop [0]{}%
+\providecommand \bibitemNoStop [0]{.\EOS\space}%
+\providecommand \EOS [0]{\spacefactor3000\relax}%
+\providecommand \BibitemShut  [1]{\csname bibitem#1\endcsname}%
+\let\auto@bib@innerbib\@empty
+%</preamble>
+\bibitem [{\citenamefont {Maxwell}(1865)}]{maxwell}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {J.~C.}\ \bibnamefont
+  {Maxwell}},\ }\href {\doibase 10.1098/rstl.1865.0008} {\bibfield  {journal}
+  {\bibinfo  {journal} {Philosophical Transactions of the Royal Society of
+  London}\ }\textbf {\bibinfo {volume} {155}},\ \bibinfo {pages} {459}
+  (\bibinfo {year} {1865})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Brackx}\ \emph {et~al.}(2005)\citenamefont {Brackx},
+  \citenamefont {Delanghe},\ and\ \citenamefont {Sommen}}]{brackx}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {F.}~\bibnamefont
+  {Brackx}}, \bibinfo {author} {\bibfnamefont {R.}~\bibnamefont {Delanghe}}, \
+  and\ \bibinfo {author} {\bibfnamefont {F.}~\bibnamefont {Sommen}},\
+  }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal} {CUBO - A
+  MATHEMATICAL JOURNAL}\ }\textbf {\bibinfo {volume} {7}},\ \bibinfo {pages}
+  {139} (\bibinfo {year} {2005})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Heras}(2007)}]{heras}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {J.~A.}\ \bibnamefont
+  {Heras}},\ }\href {\doibase 10.1119/1.2739570} {\bibfield  {journal}
+  {\bibinfo  {journal} {American Journal of Physics}\ }\textbf {\bibinfo
+  {volume} {75}},\ \bibinfo {pages} {652} (\bibinfo {year} {2007})}\BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Macdonald}()}]{macdonald}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.}~\bibnamefont
+  {Macdonald}},\ }\href@noop {} {}\bibinfo {howpublished} {Private
+  Communication}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Bliokh}\ and\ \citenamefont
+  {Nori}(2019{\natexlab{a}})}]{bliokh1}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {K.~Y.}\ \bibnamefont
+  {Bliokh}}\ and\ \bibinfo {author} {\bibfnamefont {F.}~\bibnamefont {Nori}},\
+  }\href {\doibase 10.1103/physrevb.99.020301} {\bibfield  {journal} {\bibinfo
+  {journal} {Physical Review B}\ }\textbf {\bibinfo {volume} {99}} (\bibinfo
+  {year} {2019}{\natexlab{a}}),\ 10.1103/physrevb.99.020301}\BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Bliokh}\ and\ \citenamefont
+  {Nori}(2019{\natexlab{b}})}]{bliokh2}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {K.~Y.}\ \bibnamefont
+  {Bliokh}}\ and\ \bibinfo {author} {\bibfnamefont {F.}~\bibnamefont {Nori}},\
+  }\href@noop {} {\  (\bibinfo {year} {2019}{\natexlab{b}})},\ \Eprint
+  {http://arxiv.org/abs/arXiv:1901.08962} {arXiv:1901.08962} \BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {et~al}(2018)}]{shi}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {C.~S.}\ \bibnamefont
+  {et~al}},\ }\href@noop {} {\  (\bibinfo {year} {2018})},\ \Eprint
+  {http://arxiv.org/abs/arXiv:1808.03686} {arXiv:1808.03686} \BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Burns}\ and\ \citenamefont {Dressel}(2019)}]{burns}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {L.}~\bibnamefont
+  {Burns}}\ and\ \bibinfo {author} {\bibfnamefont {J.}~\bibnamefont
+  {Dressel}},\ }\href@noop {} {\enquote {\bibinfo {title} {A lagrangian for
+  acoustic waves admitting spin angular momentum},}\ } (\bibinfo {year}
+  {2019}),\ \bibinfo {note} {in preparation}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Warner}(1983)}]{warner}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {F.~W.}\ \bibnamefont
+  {Warner}},\ }\href {\doibase 10.1007/978-1-4757-1799-0} {\emph {\bibinfo
+  {title} {Foundations of Differentiable Manifolds and Lie Groups}}}\ (\bibinfo
+   {publisher} {Springer New York},\ \bibinfo {year} {1983})\BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Spivak}(2018)}]{spivak}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {M.}~\bibnamefont
+  {Spivak}},\ }\href {\doibase 10.1201/9780429501906} {\emph {\bibinfo {title}
+  {Calculus On Manifolds}}}\ (\bibinfo  {publisher} {{CRC} Press},\ \bibinfo
+  {year} {2018})\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {W.Hehl}(2012)}]{hehl}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {F.}~\bibnamefont
+  {W.Hehl}},\ }\href@noop {} {\emph {\bibinfo {title} {Foundations of Classical
+  Electrodynamics (Progress in Mathematical Physics)}}}\ (\bibinfo  {publisher}
+  {Springer},\ \bibinfo {year} {2012})\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Hestenes}\ and\ \citenamefont
+  {Sobczyk}(1984)}]{hestenes}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {D.}~\bibnamefont
+  {Hestenes}}\ and\ \bibinfo {author} {\bibfnamefont {G.}~\bibnamefont
+  {Sobczyk}},\ }\href {\doibase 10.1007/978-94-009-6292-7} {\emph {\bibinfo
+  {title} {Clifford Algebra to Geometric Calculus}}}\ (\bibinfo  {publisher}
+  {Springer Netherlands},\ \bibinfo {year} {1984})\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Doran}\ and\ \citenamefont {Lasenby}()}]{doran}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {C.}~\bibnamefont
+  {Doran}}\ and\ \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont
+  {Lasenby}},\ }\href {\doibase 10.1017/cbo9780511807497.001} {\emph {\bibinfo
+  {title} {Geometric Algebra for Physicists}}}\ (\bibinfo  {publisher}
+  {Cambridge University Press})\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Hestenes}(2007)}]{hestenes-shape}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {D.}~\bibnamefont
+  {Hestenes}},\ }in\ \href@noop {} {\emph {\bibinfo {booktitle} {Guide to
+  Geometric Algebra in Practice}}},\ \bibinfo {editor} {edited by\ \bibinfo
+  {editor} {\bibfnamefont {L.}~\bibnamefont {Dorst}}\ and\ \bibinfo {editor}
+  {\bibfnamefont {J.}~\bibnamefont {Lasenby}}}\ (\bibinfo  {publisher}
+  {Springer},\ \bibinfo {address} {London},\ \bibinfo {year} {2007})\
+  Chap.~\bibinfo {chapter} {19}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Dvoeglazov}(2000)}]{dvoe}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {V.~V.}\ \bibnamefont
+  {Dvoeglazov}},\ }\href {\doibase 10.1088/0305-4470/33/28/305} {\bibfield
+  {journal} {\bibinfo  {journal} {Journal of Physics A: Mathematical and
+  General}\ }\textbf {\bibinfo {volume} {33}},\ \bibinfo {pages} {5011}
+  (\bibinfo {year} {2000})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Mashhoon}(2003)}]{mashhoon}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {B.}~\bibnamefont
+  {Mashhoon}},\ }\href@noop {} {\  (\bibinfo {year} {2003})},\ \Eprint
+  {http://arxiv.org/abs/arXiv:gr-qc/0311030} {arXiv:gr-qc/0311030} \BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Owen}\ \emph {et~al.}(2010)\citenamefont {Owen},
+  \citenamefont {Brink}, \citenamefont {Chen}, \citenamefont {Kaplan},
+  \citenamefont {Lovelace}, \citenamefont {Matthews}, \citenamefont {Nichols},
+  \citenamefont {Scheel}, \citenamefont {Zhang}, \citenamefont {Zimmerman},\
+  and\ \citenamefont {Thorne}}]{owen}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {R.}~\bibnamefont
+  {Owen}}, \bibinfo {author} {\bibfnamefont {J.}~\bibnamefont {Brink}},
+  \bibinfo {author} {\bibfnamefont {Y.}~\bibnamefont {Chen}}, \bibinfo {author}
+  {\bibfnamefont {J.~D.}\ \bibnamefont {Kaplan}}, \bibinfo {author}
+  {\bibfnamefont {G.}~\bibnamefont {Lovelace}}, \bibinfo {author}
+  {\bibfnamefont {K.~D.}\ \bibnamefont {Matthews}}, \bibinfo {author}
+  {\bibfnamefont {D.~A.}\ \bibnamefont {Nichols}}, \bibinfo {author}
+  {\bibfnamefont {M.~A.}\ \bibnamefont {Scheel}}, \bibinfo {author}
+  {\bibfnamefont {F.}~\bibnamefont {Zhang}}, \bibinfo {author} {\bibfnamefont
+  {A.}~\bibnamefont {Zimmerman}}, \ and\ \bibinfo {author} {\bibfnamefont
+  {K.~S.}\ \bibnamefont {Thorne}},\ }\href {\doibase
+  10.1103/PhysRevLett.106.151101} {\  (\bibinfo {year} {2010}),\
+  10.1103/PhysRevLett.106.151101},\ \Eprint
+  {http://arxiv.org/abs/arXiv:1012.4869} {arXiv:1012.4869} \BibitemShut
+  {NoStop}%
+\end{thebibliography}%
